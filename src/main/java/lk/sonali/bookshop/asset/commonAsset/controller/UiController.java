@@ -1,14 +1,9 @@
 package lk.sonali.bookshop.asset.commonAsset.controller;
 
-import lk.sonali.bookshop.asset.userManagement.service.UserService;
-import lk.sonali.bookshop.util.service.DateTimeAgeService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
-import java.util.HashSet;
 
 @Controller
 public class UiController {
@@ -16,11 +11,11 @@ public class UiController {
     private final UserService userService;
     private final DateTimeAgeService dateTimeAgeService;
 
-    @Autowired
     public UiController(UserService userService, DateTimeAgeService dateTimeAgeService) {
         this.userService = userService;
         this.dateTimeAgeService = dateTimeAgeService;
     }
+
 
     @GetMapping(value = {"/", "/index"})
     public String index() {

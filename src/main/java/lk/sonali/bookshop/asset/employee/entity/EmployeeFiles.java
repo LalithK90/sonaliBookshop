@@ -1,6 +1,6 @@
 package lk.sonali.bookshop.asset.employee.entity;
 
-import lk.sonali.bookshop.util.audit.AuditEntity;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

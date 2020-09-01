@@ -1,6 +1,4 @@
 package lk.sonali.bookshop.asset.userManagement.entity;
-
-import lk.sonali.bookshop.asset.userManagement.entity.Enum.UserSessionLogStatus;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

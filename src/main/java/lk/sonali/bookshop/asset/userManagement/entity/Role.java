@@ -1,12 +1,15 @@
 package lk.sonali.bookshop.asset.userManagement.entity;
 
-import lk.sonali.bookshop.util.audit.AuditEntity;
+
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 

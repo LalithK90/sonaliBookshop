@@ -1,11 +1,5 @@
 package lk.sonali.bookshop.configuration;
 
-
-import lk.sonali.bookshop.asset.userManagement.entity.Enum.UserSessionLogStatus;
-import lk.sonali.bookshop.asset.userManagement.entity.User;
-import lk.sonali.bookshop.asset.userManagement.entity.UserSessionLog;
-import lk.sonali.bookshop.asset.userManagement.service.UserService;
-import lk.sonali.bookshop.asset.userManagement.service.UserSessionLogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;

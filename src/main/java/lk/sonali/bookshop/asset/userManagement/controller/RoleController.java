@@ -1,7 +1,5 @@
 package lk.sonali.bookshop.asset.userManagement.controller;
 
-import lk.sonali.bookshop.asset.userManagement.entity.Role;
-import lk.sonali.bookshop.asset.userManagement.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

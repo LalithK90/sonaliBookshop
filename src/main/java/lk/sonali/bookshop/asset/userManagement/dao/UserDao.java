@@ -1,5 +1,7 @@
 package lk.sonali.bookshop.asset.userManagement.dao;
 
+import lk.sonali.bookshop.asset.employee.entity.Employee;
+import lk.sonali.bookshop.asset.userManagement.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

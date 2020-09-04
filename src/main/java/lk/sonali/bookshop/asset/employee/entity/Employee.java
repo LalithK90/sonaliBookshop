@@ -2,6 +2,15 @@ package lk.sonali.bookshop.asset.employee.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonFilter;
+import lk.sonali.bookshop.asset.branch.entity.Branch;
+import lk.sonali.bookshop.asset.commonAsset.model.Enum.BloodGroup;
+import lk.sonali.bookshop.asset.commonAsset.model.Enum.CivilStatus;
+import lk.sonali.bookshop.asset.commonAsset.model.Enum.Gender;
+import lk.sonali.bookshop.asset.commonAsset.model.Enum.Title;
+import lk.sonali.bookshop.asset.commonAsset.model.FileInfo;
+import lk.sonali.bookshop.asset.employee.entity.Enum.Designation;
+import lk.sonali.bookshop.asset.employee.entity.Enum.EmployeeStatus;
+import lk.sonali.bookshop.util.audit.AuditEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

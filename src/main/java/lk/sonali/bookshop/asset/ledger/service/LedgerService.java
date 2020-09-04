@@ -1,6 +1,10 @@
 package lk.sonali.bookshop.asset.ledger.service;
 
 
+import lk.sonali.bookshop.asset.item.entity.Item;
+import lk.sonali.bookshop.asset.ledger.dao.LedgerDao;
+import lk.sonali.bookshop.asset.ledger.entity.Ledger;
+import lk.sonali.bookshop.util.interfaces.AbstractService;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;

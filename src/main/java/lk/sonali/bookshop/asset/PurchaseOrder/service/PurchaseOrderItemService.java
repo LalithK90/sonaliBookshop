@@ -1,16 +1,22 @@
 package lk.sonali.bookshop.asset.PurchaseOrder.service;
 
 
+import lk.sonali.bookshop.asset.PurchaseOrder.dao.PurchaseOrderItemDao;
+import lk.sonali.bookshop.asset.PurchaseOrder.entity.PurchaseOrder;
+import lk.sonali.bookshop.asset.PurchaseOrder.entity.PurchaseOrderItem;
+import lk.sonali.bookshop.asset.item.entity.Item;
+import lk.sonali.bookshop.util.interfaces.AbstractService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
-import java.util.*;
+
+import java.util.List;
 
 @Service
-@CacheConfig(cacheNames = "purchaseOrderItem")
-public class PurchaseOrderItemService implements AbstractService< PurchaseOrderItem, Integer> {
+@CacheConfig( cacheNames = "purchaseOrderItem" )
+public class PurchaseOrderItemService implements AbstractService< PurchaseOrderItem, Integer > {
     private final PurchaseOrderItemDao purchaseOrderItemDao;
 
     @Autowired
@@ -18,7 +24,7 @@ public class PurchaseOrderItemService implements AbstractService< PurchaseOrderI
         this.purchaseOrderItemDao = purchaseOrderItemDao;
     }
 
-    public List<PurchaseOrderItem> findAll() {
+    public List< PurchaseOrderItem > findAll() {
         return purchaseOrderItemDao.findAll();
     }
 
@@ -35,12 +41,12 @@ public class PurchaseOrderItemService implements AbstractService< PurchaseOrderI
         return false;
     }
 
-    public List<PurchaseOrderItem> search(PurchaseOrderItem purchaseOrderItem) {
+    public List< PurchaseOrderItem > search(PurchaseOrderItem purchaseOrderItem) {
         ExampleMatcher matcher = ExampleMatcher
                 .matching()
                 .withIgnoreCase()
                 .withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING);
-        Example<PurchaseOrderItem> purchaseRequestExample = Example.of(purchaseOrderItem, matcher);
+        Example< PurchaseOrderItem > purchaseRequestExample = Example.of(purchaseOrderItem, matcher);
         return purchaseOrderItemDao.findAll(purchaseRequestExample);
     }
 
@@ -48,10 +54,9 @@ public class PurchaseOrderItemService implements AbstractService< PurchaseOrderI
         return purchaseOrderItemDao.findByPurchaseOrderAndItem(purchaseOrder, item);
     }
 
-    public List<PurchaseOrderItem> findByPurchaseOrder(PurchaseOrder purchaseOrder) {
+    public List< PurchaseOrderItem > findByPurchaseOrder(PurchaseOrder purchaseOrder) {
         return purchaseOrderItemDao.findByPurchaseOrder(purchaseOrder);
     }
-
 
 
 }

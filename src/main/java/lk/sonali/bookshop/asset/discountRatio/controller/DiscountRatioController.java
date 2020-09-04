@@ -1,4 +1,7 @@
 package lk.sonali.bookshop.asset.discountRatio.controller;
+import lk.sonali.bookshop.asset.discountRatio.entity.DiscountRatio;
+import lk.sonali.bookshop.asset.discountRatio.entity.Enum.DiscountRatioStatus;
+import lk.sonali.bookshop.asset.discountRatio.service.DiscountRatioService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;

@@ -1,5 +1,16 @@
 package lk.sonali.bookshop.asset.payment.controller;
 
+import lk.sonali.bookshop.asset.PurchaseOrder.entity.Enum.PurchaseOrderStatus;
+import lk.sonali.bookshop.asset.PurchaseOrder.entity.PurchaseOrder;
+import lk.sonali.bookshop.asset.PurchaseOrder.service.PurchaseOrderService;
+import lk.sonali.bookshop.asset.goodReceivedNote.entity.Enum.GoodReceivedNoteState;
+import lk.sonali.bookshop.asset.goodReceivedNote.entity.GoodReceivedNote;
+import lk.sonali.bookshop.asset.goodReceivedNote.service.GoodReceivedNoteService;
+import lk.sonali.bookshop.asset.invoice.entity.Enum.PaymentMethod;
+import lk.sonali.bookshop.asset.payment.entity.Payment;
+import lk.sonali.bookshop.asset.payment.service.PaymentService;
+import lk.sonali.bookshop.util.service.MakeAutoGenerateNumberService;
+import lk.sonali.bookshop.util.service.OperatorService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -84,7 +95,8 @@ public class PaymentController {
                         purchaseOrder.setGrnAt(LocalDateTime.now());
                     }
                     purchaseOrder.setPaidAmount(paidAmount);
-                    purchaseOrderNeedToPay.setNeedToPaid(operatorService.subtraction(purchaseOrder.getPrice(), paidAmount));
+                    purchaseOrderNeedToPay.setNeedToPaid(operatorService.subtraction(purchaseOrder.getPrice(),
+                                                                                     paidAmount));
                 }
                 purchaseOrderNotPaid.add(purchaseOrder);
             }
@@ -134,7 +146,7 @@ public class PaymentController {
                 goodReceivedNote.setGoodReceivedNoteState(GoodReceivedNoteState.PAID);
                 goodReceivedNoteService.persist(goodReceivedNote);
                 //change purchase order status
-                PurchaseOrder completedPurchaseOrder =purchaseOrderService.findById(purchaseOrder.getId());
+                PurchaseOrder completedPurchaseOrder = purchaseOrderService.findById(purchaseOrder.getId());
                 completedPurchaseOrder.setPurchaseOrderStatus(PurchaseOrderStatus.COMPLETED);
                 purchaseOrderService.persist(completedPurchaseOrder);
             }

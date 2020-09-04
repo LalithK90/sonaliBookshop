@@ -1,5 +1,7 @@
 package lk.sonali.bookshop.asset.ledger.dao;
 
+import lk.sonali.bookshop.asset.item.entity.Item;
+import lk.sonali.bookshop.asset.ledger.entity.Ledger;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

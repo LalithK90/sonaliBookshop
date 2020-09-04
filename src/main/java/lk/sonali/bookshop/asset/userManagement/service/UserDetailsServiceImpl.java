@@ -1,5 +1,8 @@
 package lk.sonali.bookshop.asset.userManagement.service;
 
+import lk.sonali.bookshop.asset.userManagement.CustomerUserDetails;
+import lk.sonali.bookshop.asset.userManagement.dao.UserDao;
+import lk.sonali.bookshop.asset.userManagement.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

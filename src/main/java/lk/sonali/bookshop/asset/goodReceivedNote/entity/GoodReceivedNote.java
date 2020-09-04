@@ -3,6 +3,10 @@ package lk.sonali.bookshop.asset.goodReceivedNote.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonFilter;
+import lk.sonali.bookshop.asset.PurchaseOrder.entity.PurchaseOrder;
+import lk.sonali.bookshop.asset.goodReceivedNote.entity.Enum.GoodReceivedNoteState;
+import lk.sonali.bookshop.asset.ledger.entity.Ledger;
+import lk.sonali.bookshop.util.audit.AuditEntity;
 import lombok.*;
 
 import javax.persistence.*;

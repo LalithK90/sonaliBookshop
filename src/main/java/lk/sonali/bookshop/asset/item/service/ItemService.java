@@ -1,5 +1,11 @@
 package lk.sonali.bookshop.asset.item.service;
 
+import lk.sonali.bookshop.asset.category.entity.Category;
+import lk.sonali.bookshop.asset.item.dao.ItemDao;
+import lk.sonali.bookshop.asset.item.entity.Enum.ItemStatus;
+import lk.sonali.bookshop.asset.item.entity.Item;
+import lk.sonali.bookshop.asset.ledger.dao.LedgerDao;
+import lk.sonali.bookshop.util.interfaces.AbstractService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.data.domain.Example;

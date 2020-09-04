@@ -1,6 +1,7 @@
 package lk.sonali.bookshop.asset.category.dao;
 
 
+import lk.sonali.bookshop.asset.category.entity.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

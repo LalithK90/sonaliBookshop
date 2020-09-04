@@ -2,6 +2,8 @@ package lk.sonali.bookshop.asset.branch.entity;
 
 
 
+import lk.sonali.bookshop.asset.employee.entity.Employee;
+import lk.sonali.bookshop.util.audit.AuditEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

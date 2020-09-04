@@ -4,12 +4,12 @@ package lk.sonali.bookshop.asset.item.entity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
-import lk.samarasingherSuper.asset.PurchaseOrder.entity.PurchaseOrderItem;
-import lk.samarasingherSuper.asset.category.entity.Category;
-import lk.samarasingherSuper.asset.item.entity.Enum.ItemStatus;
-import lk.samarasingherSuper.asset.ledger.entity.Ledger;
-import lk.samarasingherSuper.asset.supplierItem.entity.SupplierItem;
-import lk.samarasingherSuper.util.audit.AuditEntity;
+import lk.sonali.bookshop.asset.PurchaseOrder.entity.PurchaseOrderItem;
+import lk.sonali.bookshop.asset.category.entity.Category;
+import lk.sonali.bookshop.asset.item.entity.Enum.ItemStatus;
+import lk.sonali.bookshop.asset.ledger.entity.Ledger;
+import lk.sonali.bookshop.asset.supplierItem.entity.SupplierItem;
+import lk.sonali.bookshop.util.audit.AuditEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

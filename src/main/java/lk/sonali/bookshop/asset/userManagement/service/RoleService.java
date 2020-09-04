@@ -1,5 +1,8 @@
 package lk.sonali.bookshop.asset.userManagement.service;
 
+import lk.sonali.bookshop.asset.userManagement.dao.RoleDao;
+import lk.sonali.bookshop.asset.userManagement.entity.Role;
+import lk.sonali.bookshop.util.interfaces.AbstractService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.*;
 import org.springframework.data.domain.Example;

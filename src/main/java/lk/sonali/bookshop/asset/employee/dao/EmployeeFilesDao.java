@@ -1,5 +1,7 @@
 package lk.sonali.bookshop.asset.employee.dao;
 
+import lk.sonali.bookshop.asset.employee.entity.Employee;
+import lk.sonali.bookshop.asset.employee.entity.EmployeeFiles;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

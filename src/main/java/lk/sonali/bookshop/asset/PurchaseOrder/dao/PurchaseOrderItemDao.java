@@ -1,5 +1,8 @@
 package lk.sonali.bookshop.asset.PurchaseOrder.dao;
 
+import lk.sonali.bookshop.asset.PurchaseOrder.entity.PurchaseOrder;
+import lk.sonali.bookshop.asset.PurchaseOrder.entity.PurchaseOrderItem;
+import lk.sonali.bookshop.asset.item.entity.Item;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

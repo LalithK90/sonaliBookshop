@@ -4,6 +4,8 @@ package lk.sonali.bookshop.asset.category.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonFilter;
+import lk.sonali.bookshop.asset.item.entity.Enum.MainCategory;
+import lk.sonali.bookshop.asset.item.entity.Item;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -4,6 +4,9 @@ package lk.sonali.bookshop.asset.commonAsset.controller;
 
 
 
+import lk.sonali.bookshop.asset.userManagement.entity.PasswordChange;
+import lk.sonali.bookshop.asset.userManagement.entity.User;
+import lk.sonali.bookshop.asset.userManagement.service.UserService;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;

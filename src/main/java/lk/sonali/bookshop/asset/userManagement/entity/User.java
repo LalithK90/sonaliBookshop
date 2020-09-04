@@ -5,6 +5,8 @@ package lk.sonali.bookshop.asset.userManagement.entity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
 
+import lk.sonali.bookshop.asset.employee.entity.Employee;
+import lk.sonali.bookshop.util.audit.AuditEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

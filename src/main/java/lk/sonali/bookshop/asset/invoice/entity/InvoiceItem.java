@@ -3,6 +3,8 @@ package lk.sonali.bookshop.asset.invoice.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonFilter;
+import lk.sonali.bookshop.asset.item.entity.Item;
+import lk.sonali.bookshop.util.audit.AuditEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

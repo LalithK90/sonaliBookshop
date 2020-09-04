@@ -2,6 +2,9 @@ package lk.sonali.bookshop.asset.customer.service;
 
 
 
+import lk.sonali.bookshop.asset.customer.dao.CustomerDao;
+import lk.sonali.bookshop.asset.customer.entity.Customer;
+import lk.sonali.bookshop.util.interfaces.AbstractService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.data.domain.Example;

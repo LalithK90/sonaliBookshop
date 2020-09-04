@@ -4,6 +4,12 @@ package lk.sonali.bookshop.asset.invoice.entity;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lk.sonali.bookshop.asset.customer.entity.Customer;
+import lk.sonali.bookshop.asset.discountRatio.entity.DiscountRatio;
+import lk.sonali.bookshop.asset.invoice.entity.Enum.InvoicePrintOrNot;
+import lk.sonali.bookshop.asset.invoice.entity.Enum.InvoiceValidOrNot;
+import lk.sonali.bookshop.asset.invoice.entity.Enum.PaymentMethod;
+import lk.sonali.bookshop.util.audit.AuditEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

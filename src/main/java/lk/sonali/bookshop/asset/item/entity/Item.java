@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
 import lk.sonali.bookshop.asset.PurchaseOrder.entity.PurchaseOrderItem;
+import lk.sonali.bookshop.asset.author.entity.Author;
 import lk.sonali.bookshop.asset.category.entity.Category;
 import lk.sonali.bookshop.asset.item.entity.Enum.ItemStatus;
 import lk.sonali.bookshop.asset.ledger.entity.Ledger;
@@ -56,4 +57,10 @@ public class Item extends AuditEntity {
 
     @OneToMany( mappedBy = "item" )
     private List< PurchaseOrderItem > purchaseOrderItems;
+
+    @ManyToMany(mappedBy = "items")
+    @JoinTable(name = "item_author",
+            joinColumns = @JoinColumn(name = "item_id"),
+            inverseJoinColumns = @JoinColumn(name = "author_id"))
+    private List< Author > authors;
 }

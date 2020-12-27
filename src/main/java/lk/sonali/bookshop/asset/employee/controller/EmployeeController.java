@@ -2,10 +2,7 @@ package lk.sonali.bookshop.asset.employee.controller;
 
 
 
-import lk.sonali.bookshop.asset.commonAsset.model.Enum.BloodGroup;
-import lk.sonali.bookshop.asset.commonAsset.model.Enum.CivilStatus;
-import lk.sonali.bookshop.asset.commonAsset.model.Enum.Gender;
-import lk.sonali.bookshop.asset.commonAsset.model.Enum.Title;
+import lk.sonali.bookshop.asset.commonAsset.model.Enum.*;
 import lk.sonali.bookshop.asset.commonAsset.service.CommonService;
 import lk.sonali.bookshop.asset.employee.entity.Employee;
 import lk.sonali.bookshop.asset.employee.entity.EmployeeFiles;
@@ -13,6 +10,7 @@ import lk.sonali.bookshop.asset.employee.entity.enums.Designation;
 import lk.sonali.bookshop.asset.employee.entity.enums.EmployeeStatus;
 import lk.sonali.bookshop.asset.employee.service.EmployeeFilesService;
 import lk.sonali.bookshop.asset.employee.service.EmployeeService;
+import lk.sonali.bookshop.asset.userManagement.entity.User;
 import lk.sonali.bookshop.asset.userManagement.service.UserService;
 import lk.sonali.bookshop.util.service.DateTimeAgeService;
 import lk.sonali.bookshop.util.service.MakeAutoGenerateNumberService;

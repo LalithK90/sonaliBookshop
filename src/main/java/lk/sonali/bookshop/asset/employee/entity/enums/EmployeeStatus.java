@@ -1,6 +1,4 @@
-package lk.sonali.bookshop.asset.employee.entity.Enum;
-
-
+package lk.sonali.bookshop.asset.employee.entity.enums;
 
 public enum EmployeeStatus {
     WORKING("Working"),

@@ -23,7 +23,7 @@ public class AuthorService implements AbstractService< Author, Integer> {
     }
 
 
-    @Cacheable(value = "SampleCollectingTube")
+    @Cacheable(value = "Author")
     public List< Author > findAll() {
         return authorDao.findAll();
     }

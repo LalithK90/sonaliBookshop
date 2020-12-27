@@ -18,12 +18,12 @@
             <h4 class="text-light text-center">
                 <strong>
                     <span
-                            data-th-text="${addStatus==true?'New Sample Collecting Tube Add':'Update Sample Collecting Tube Details'}"></span>
+                            data-th-text="${addStatus==true?'New School Add':'Update School Details'}"></span>
                 </strong>
             </h4>
         </div>
         <div class="col">
-            <a class="btn btn-primary" href="/author">
+            <a class="btn btn-primary" href="/school">
                 <i class="fa fa-list"></i>&nbsp; View List
             </a>
         </div>
@@ -32,8 +32,8 @@
 <!--Form Content - start -->
 <div class="container-fluid bg-dark formBorder">
     <div class="col-sm-12 flex-column ">
-        <form data-th-action="${addStatus==true?'/author/save':'/author/update'}"
-              data-th-object="${author}"
+        <form data-th-action="${addStatus==true?'/school/save':'/school/update'}"
+              data-th-object="${school}"
               method="POST">
             <div class="row">
                 <!--Left Side-->

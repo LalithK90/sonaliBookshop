@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head data-th-replace="~{fragments/header :: headerFragment}">
+<html lang="en" >
+<head  data-th-replace="~{fragments/header :: headerFragment}">
     <meta charset="UTF-8">
     <title>supplier-detail</title>
 </head>
 <body>
-<nav data-th-replace="~{fragments/navBar :: navBarFragment}"></nav>
+<nav  data-th-replace="~{fragments/navBar :: navBarFragment}"></nav>
 <!--heading Area-->
-<div class="container-fluid bg-dark form-Border">
+<div class="container-fluid ">
     <div class="row text-center formManagement border-info">
         <!--View List Button-->
         <div class="col">
@@ -19,7 +19,7 @@
         <div class="col">
             <h2 class="text-light text-center">
                 <strong>
-                    <p data-th-text="${supplierDetail.name}"></p>
+                    <p  data-th-text="${supplierDetail.name}"></p>
                 </strong>
             </h2>
         </div>
@@ -32,7 +32,7 @@
     </div>
 </div>
 <!--details-->
-<div class="container-fluid ">
+<div class="container-fluid bg-dark formBorder">
     <div class="col-sm-12 flex-column" data-th-fragment="supplierDetailsFragment">
         <div class="row">
             <!--Left Side-->
@@ -40,10 +40,10 @@
                 <!--id-->
                 <div class="form-row text-right">
                     <div class="col-md-4">
-                        <label class="control-label" for="id">ID :</label>
+                        <label class="control-label" for="supplier_id">ID :</label>
                     </div>
                     <div class="col-md-8">
-                        <p id="id" data-th-text="${supplierDetail.id}" class="display_detail"></p>
+                        <p id="supplier_id" data-th-text="${supplierDetail.id}" class="display_detail"></p>
                     </div>
                 </div>
                 <!--Code-->
@@ -127,8 +127,7 @@
                         <label class="control-label" for="createdAt">Created At :</label>
                     </div>
                     <div class="col-md-8">
-                        <p id="createdAt"
-                           data-th-text="${#temporals.format(supplierDetail.createdAt, 'dd-MM-yyyy HH:mm')}"
+                        <p id="createdAt" data-th-text="${#temporals.format(supplierDetail.createdAt, 'dd-MM-yyyy HH:mm')}"
                            class="display_detail"></p>
                     </div>
                 </div>
@@ -138,9 +137,7 @@
                         <label class="control-label" for="updatedBy">Updated By :</label>
                     </div>
                     <div class="col-md-8">
-                        <p id="updatedBy"
-                           data-th-text="${#temporals.format(supplierDetail.updatedAt, 'dd-MM-yyyy HH:mm')}"
-                           class="display_detail"></p>
+                        <p id="updatedBy" data-th-text="${#temporals.format(supplierDetail.updatedAt, 'dd-MM-yyyy HH:mm')}" class="display_detail"></p>
                     </div>
                 </div>
                 <!--Updated at-->
@@ -164,10 +161,11 @@
         </a>
     </div>
 </div>
-<!--footer include-->
-<footer data-th-replace="~{fragments/footer :: footerFragment}"></footer>
+
+<!--details-->
+<div   data-th-replace="~{fragments/footer :: footerFragment}"></div>
 <!--script include-->
-<script data-th-replace="~{fragments/script :: scriptFragment}"></script>
+<script  data-th-replace="~{fragments/script :: scriptFragment}"></script>
 
 </body>
 </html>

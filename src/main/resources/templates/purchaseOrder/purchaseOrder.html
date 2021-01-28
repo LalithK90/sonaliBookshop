@@ -1,14 +1,18 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" >
 <head data-th-replace="~{fragments/header :: headerFragment}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
-    <title>purchaseOrder</title>
+    <title>J N Super </title>
 </head>
+
+
+
 <body>
 <nav data-th-replace="~{fragments/navBar :: navBarFragment}"></nav>
 
 <!--heading Area-->
-<div class="container-fluid bg-dark form-Border">
+<div class="container-fluid ">
     <div class="row text-center formManagement border-info">
         <!-- New PR Button-->
         <div class="col">
@@ -32,11 +36,11 @@
         </div>
     </div>
 </div>
-<div class="container-fluid  text-center">
+<div class="container-fluid bg-info formBorder text-center">
     <!--Table view-->
     <div class="col">
         <div class="col" id="purchaseRequestListPresent"
-             data-th-if="${not #lists.isEmpty(purchaseOrders)}">
+              data-th-if="${not #lists.isEmpty(purchaseOrders)}">
             <table class="table table-hover table-striped" id="myTable">
                 <thead>
                     <tr>
@@ -60,12 +64,12 @@
                         <th >
                             <a data-th-href="${'/purchaseOrder/' + purchaseOrder.id}" class="btn btn-primary btn-sm"><i
                                     class="fa fa-folder-open" style="font-size: 15px"></i>&nbsp;View</a>
-                            <a data-th-if="${grnStatus}" data-th-href="${'/goodReceivedNote/' + purchaseOrder.id}"
+                            <a  data-th-if="${grnStatus}" data-th-href="${'/goodReceivedNote/' + purchaseOrder.id}"
                                class="btn btn-success btn-sm"><i
                                     class="fa fa-edit" style="font-size: 15px"></i>&nbsp;GRN</a>
                             <a data-th-href="${'/purchaseOrder/delete/' + purchaseOrder.id}"
                                class="btn btn-danger btn-sm">
-                                <!--data-th-if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}"--> <i
+                                <!-- data-th-if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}"--> <i
                                     class="fa fa-trash" style="font-size: 15px"></i> Delete</a>
                         </th>
                     </tr>
@@ -74,7 +78,7 @@
         </div>
     </div>
     <!--Error-->
-    <div class="row" data-th-if="${ #lists.isEmpty(purchaseOrders)}">
+    <div class="row"  data-th-if="${ #lists.isEmpty(purchaseOrders)}">
         <div class="col-sm-12">
             <div class="alert alert-warning alert-dismissible fade show" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -93,10 +97,9 @@
     </div>
 </div>
 
-<!--footer include-->
-<footer data-th-replace="~{fragments/footer :: footerFragment}"></footer>
+<div  data-th-replace="~{fragments/footer :: footerFragment}"></div>
 <!--script include-->
-<script data-th-replace="~{fragments/script :: scriptFragment}"></script>
+<div data-th-replace="~{fragments/script :: scriptFragment}"></div>
 
 </body>
 </html>

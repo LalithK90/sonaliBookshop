@@ -3,17 +3,21 @@ package lk.sonali_bookshop.asset.item.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFilter;
+import lk.sonali_bookshop.asset.author.entity.Author;
 import lk.sonali_bookshop.asset.category.entity.Category;
 import lk.sonali_bookshop.asset.common_asset.model.enums.LiveDead;
 import lk.sonali_bookshop.asset.item.entity.enums.ItemStatus;
 import lk.sonali_bookshop.asset.ledger.entity.Ledger;
 import lk.sonali_bookshop.asset.purchase_order_item.entity.PurchaseOrderItem;
 import lk.sonali_bookshop.asset.supplier_item.entity.SupplierItem;
+import lk.sonali_bookshop.asset.user_management.role.entity.Role;
 import lk.sonali_bookshop.util.audit.AuditEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -59,4 +63,11 @@ public class Item extends AuditEntity {
 
     @OneToMany( mappedBy = "item" )
     private List< PurchaseOrderItem > purchaseOrderItems;
+
+    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @Fetch( FetchMode.SUBSELECT)
+    @JoinTable(name = "author_item",
+        joinColumns = @JoinColumn(name = "item_id"),
+        inverseJoinColumns = @JoinColumn(name = "author_id"))
+    private List< Author > authors;
 }

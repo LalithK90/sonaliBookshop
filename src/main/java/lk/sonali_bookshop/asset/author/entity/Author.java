@@ -22,7 +22,6 @@ public class Author {
     @Column(nullable = false, length = 45, unique = true)
     private String name;
 
-
     @ManyToMany(mappedBy = "authors")
     private List< Item > items;
 

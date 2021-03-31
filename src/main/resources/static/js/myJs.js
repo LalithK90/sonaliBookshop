@@ -14,26 +14,25 @@ $(document).ready(function () {
 
 
     /*//--------------- data table short using - data table plugin ------- start //*/
-    if ($("#myTable").val() !== null || $("#myTable").val() === undefined) {
-        $("#myTable").DataTable({
-            "lengthMenu": [[5, 10, 15, 20, -1], [5, 10, 15, 20, "All"]],
-            "ordering": false,
-            stateSave: true,
-        });
-    }
+    $("#myTable").DataTable({
+        "lengthMenu": [[5, 10, 15, 20, -1], [5, 10, 15, 20, "All"]],
+        "ordering": false,
+        stateSave: true,
+    });
     /*//--------------- data table short using - data table plugin ------- start //*/
 
     /*When edit employee if there is a nic number need to select relevant gender*/
-    if ($("#nic").val() !== null || $("#nic").val() === undefined){
-        $("input:radio[name=gender]").filter(`[value=${calculateGender($("#nic").val())}]`).prop('checked',true);
+    if ($("#nic").val() !== null && $("#nic").val() !== undefined) {
+        $("input:radio[name=gender]").filter(`[value=${calculateGender($("#nic").val())}]`).prop('checked', true);
     }
+
 
     /* Patient and employee Nic Validation - start*/
     $("#nic").bind('keyup', function () {
         let nic = $(this).val();
         $("#dateOfBirth").val(calculateDateOfBirth(nic));
-//access our front-end gender*/
-        $("input:radio[name=gender]").filter(`[value=${calculateGender(nic)}]`).prop('checked',true);
+        //access our front-end gender*/
+        $("input:radio[name=gender]").filter(`[value=${calculateGender(nic)}]`).prop('checked', true);
 
     });
     /* Patient and employee Nic Validation - end*/
@@ -45,12 +44,11 @@ $(document).ready(function () {
 });
 
 
-
 // regex
 let nicRegex = /^([0-9]{9}[vV|xX])|^([0-9]{12})$/;
 let mobileRegex = /^([0][7][\d]{8}$)|^([7][\d]{8})$/;
 let landRegex = /^0((11)|(2(1|[3-7]))|(3[1-8])|(4(1|5|7))|(5(1|2|4|5|7))|(6(3|[5-7]))|([8-9]1))([2-4]|5|7|9)[0-9]{6}$/;
-let nameRegex = /^[a-zA-Z .-]{5}[ a-zA-Z.-]+$/;
+let nameRegex = /^[a-zA-Z .-]{3}[ a-zA-Z.-]+$/;
 let numberRegex = /^([eE][hH][sS][\d]+)$/;
 let invoiceNumberRegex = /^[0-9]{10}$/;
 
@@ -361,107 +359,29 @@ let conformationAndLoginWindow = function () {
     });
 };
 
-//custom invoice search page validation - start
-$("#invoiceFindBy").bind("change", function () {
-    //set what is the parameter will search
-    $("#invoiceFindValue").attr('name', $("#invoiceFindBy").val());
-    document.getElementById("invoiceFindValue").style.setProperty('background-color', '#ffffff', 'important');
-    $("#invoiceFindValue").val("");
-});
 
-$("#invoiceFindValue").bind("keyup", function () {
-    let selectedInvoiceSearch = document.getElementById("invoiceFindBy").value;
-    let enterValue = $(this).val();
-    if (document.getElementById("invoiceFindValue").value.length === 0) {
-        backgroundColourChangeNothingToChange($(this));
-    } else {
-        switch (selectedInvoiceSearch) {
-            case ("patient.number") :
-                if (numberRegex.test(enterValue)) {
-                    backgroundColourChangeGood($(this));
-                } else {
-                    backgroundColourChangeBad($(this));
-                }
-                break;
-            case ("patient.nic") :
-                if (nicRegex.test(enterValue)) {
-                    backgroundColourChangeGood($(this));
-                } else {
-                    backgroundColourChangeBad($(this));
-                }
-                break;
-            case ("patient.mobile") :
-                if (mobileRegex.test(enterValue)) {
-                    backgroundColourChangeGood($(this));
-                } else {
-                    backgroundColourChangeBad($(this));
-                }
-                break;
-            case ("patient.name") :
-                if (nameRegex.test(enterValue)) {
-                    backgroundColourChangeGood($(this));
-                } else {
-                    backgroundColourChangeBad($(this));
-                }
-                break;
-            case ("number") :
-                if (invoiceNumberRegex.test(enterValue)) {
-                    backgroundColourChangeGood($(this));
-                } else {
-                    backgroundColourChangeBad($(this));
-                }
-                break;
-        }
-    }
-});
-//custom invoice search page validation - end
-
-//search form date validation - start
-const milliSecondToDay = Date.parse(new Date());
-
-$("#startDate").bind("input", function () {
+$("#startDate, #endDate").bind("click", function () {
     let startDate = document.getElementById("startDate").value;
-
-//only start date has value
-    if (startDate.length !== 0) {
-        let milliSecondStartDate = Date.parse(startDate);
-        if (milliSecondToDay > milliSecondStartDate) {
-            backgroundColourChangeGood($(this));
-        } else {
-            backgroundColourChangeBad($(this));
-        }
-    } else {
-        backgroundColourChangeNothingToChange($(this));
-    }
-});
-
-$("#endDate").bind("input", function () {
     let endDate = document.getElementById("endDate").value;
 
-//only start date has value
     if (endDate.length !== 0) {
-        let milliSecondStartDate = Date.parse(endDate);
-        if (milliSecondToDay > milliSecondStartDate) {
+        $('#startDate').attr('max', $('#endDate').val());
+    }
+    if (startDate.length !== 0) {
+        $('#endDate').attr('min', $('#startDate').val());
+    }
+
+//only start date has value
+    if (startDate.length !== 0 && endDate.length !== 0) {
+        let milliSecondStartDate = Date.parse(startDate);
+        let milliSecondEndDate = Date.parse(endDate);
+        if (milliSecondEndDate > milliSecondStartDate) {
             backgroundColourChangeGood($(this));
         } else {
             backgroundColourChangeBad($(this));
         }
     } else {
         backgroundColourChangeNothingToChange($(this));
-    }
-});
-
-$('#endDate, #startDate').on('click', function () {
-    let endValue = $('#endDate').val();
-    let startValue = $('#startDate').val();
-    console.log(" end " + endValue + "  start " + startValue);
-    if (endValue !== null) {
-        $('#startDate').attr('max', $('#endDate').val());
-        console.log("1 end " + endValue + "  start " + startValue);
-    }
-    if (startValue !== null) {
-        $('#endDate').attr('min', $('#startDate').val());
-        console.log("2 end " + endValue + "  start " + startValue);
     }
 });
 
@@ -549,21 +469,6 @@ let deleteAllTableRow = function (tableName) {
     }
 };
 
-/*jquery - ui function*/
-//$( "input" ).checkboxradio;
-
-$(function () {
-    $("#").resizable({
-        autoHide: true,
-        aspectRatio: true,
-        ghost: true,
-    });
-});
-
-//$( ".login" ).draggable();
-//$( "#dateOfBirth" ).datepicker;
-//$( document ).tooltip();
-
 
 //password validator user add
 $('#password').keyup(function () {
@@ -641,8 +546,3 @@ $(".reveal").on('click', function () {
         $pwd.attr('type', 'password');
     }
 });
-
-/*When edit employee if there is a nic number need to select relevant gender*/
-if ($("#nic").val() !== null || $("#nic").val() === undefined){
-    $("input:radio[name=gender]").filter(`[value=${calculateGender($("#nic").val())}]`).prop('checked',true);
-}

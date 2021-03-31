@@ -1,7 +1,6 @@
 package lk.sonali_bookshop.asset.report;
 
 import lk.sonali_bookshop.asset.common_asset.model.NameCount;
-
 import lk.sonali_bookshop.asset.common_asset.model.ParameterCount;
 import lk.sonali_bookshop.asset.common_asset.model.TwoDate;
 import lk.sonali_bookshop.asset.employee.entity.Employee;
@@ -256,15 +255,14 @@ public class ReportController {
       NameCount nameCount = new NameCount();
       Employee employee = userService.findByUserName(x).getEmployee();
       nameCount.setName(employee.getTitle().getTitle() + " " + employee.getName());
-      AtomicReference< BigDecimal > userTotalCount = new AtomicReference<>(BigDecimal.ZERO);
+      List< BigDecimal > userTotalCount = new ArrayList<>();
       List< Payment > paymentUser =
           payments.stream().filter(a -> a.getCreatedBy().equals(x)).collect(Collectors.toList());
       nameCount.setCount(paymentUser.size());
       paymentUser.forEach(a -> {
-        BigDecimal addAmount = operatorService.addition(userTotalCount.get(), a.getAmount());
-        userTotalCount.set(addAmount);
+        userTotalCount.add(a.getAmount());
       });
-      nameCount.setTotal(userTotalCount.get());
+      nameCount.setTotal(userTotalCount.stream().reduce(BigDecimal.ZERO,BigDecimal::add));
       paymentByUserAndTotalAmount.add(nameCount);
     });
 

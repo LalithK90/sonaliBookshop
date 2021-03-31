@@ -2,16 +2,16 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{fragments/header :: headerFragment}">
     <meta charset="UTF-8">
-    <title>addBranch</title>
+    <title>addBrand</title>
 </head>
 <body>
 <nav th:replace="~{fragments/navBar :: navBarFragment}"></nav>
 <!--Heading Area-->
-<div class="container-fluid bg-dark form-Border">
-    <div class="row text-center formManagement border-info">
+<div class="container-fluid  ">
+    <div class="row text-center   ">
         <!--ViewList Button-->
         <div class="col">
-            <a href="/branch" class="btn btn-primary" tabindex="1">
+            <a href="/brand" class="btn btn-primary" tabindex="1">
                 <i class="fa fa-list" style="font-size: 20px"></i>&nbsp;&nbsp;View List
             </a>
         </div>
@@ -19,7 +19,7 @@
         <div class="col">
             <h2 class="text-light text-center">
                 <strong>
-                    <span th:text="${addStatus==true?'Add New Branch':'Update Branch Details'}"></span>
+                    <span  data-th-text="${addStatus==true?'Add New Brand':'Update Brand Details'}"></span>
                 </strong>
             </h2>
         </div>
@@ -32,10 +32,10 @@
     </div>
 </div>
 <!--Form Content-->
-<div class="container-fluid ">
+<div class="container-fluid bg-dark formBorder">
     <div class="col-sm-12 flex-column ">
-        <form id="form" class="form-horizontal" th:action="${addStatus==true?'/branch/save':'/branch/update'}"
-              th:object="${branch}" method="POST" enctype="multipart/form-data">
+        <form id="form" class="form-horizontal" th:action="${addStatus==true?'/brand/save':'/brand/update'}"
+              th:object="${brand}" method="POST" enctype="multipart/form-data">
             <div class="row">
                 <!--Left Side-->
                 <div class="form-group col-md-6 col-sm-6 text-left flex-column">
@@ -59,39 +59,7 @@
                                   th:if="${#fields.hasErrors('name')}" class="error">Error Name</span>
                         </div>
                     </div>
-                    <!--Land Number-->
-                    <div class="form-row text-right">
-                        <div class="col-md-4">
-                            <label class="control-label" for="land">Land No :</label>
-                        </div>
-                        <div class="col-md-8">
-                            <input id="land" th:field="*{land}" class="form-control land" tabindex="5" type="text" maxlength="10" min="9" required/>
-                            <span class="error" th:errors="*{land}"
-                                  th:if="${#fields.hasErrors('land')}" id="mobileError">Error Land Number</span>
-                        </div>
-                    </div>
-                    <!--Address-->
-                    <div class="form-row text-right">
-                        <div class="col-md-4">
-                            <label class="control-label" for="address">Address :</label>
-                        </div>
-                        <div class="col-md-8">
-                            <textarea id="address" th:field="*{address}" class="form-control" tabindex="6" rows="4" style="font-size: medium"></textarea>
-                            <span class="error" th:errors="*{address}"
-                                  th:if="${#fields.hasErrors('address')}" id="addressError">Error Address</span>
-                        </div>
-                    </div>
-                    <!--Email-->
-                    <div class="form-row text-right">
-                        <div class="col-md-4">
-                            <label class="control-label" for="email">Email :</label>
-                        </div>
-                        <div class="col-md-8">
-                            <input id="email" th:field="*{email}" class="form-control" tabindex="7" type="email" required/>
-                            <span id="emailError" th:errors="*{email}"
-                                  th:if="${#fields.hasErrors('email')}" class="error">Error Email</span>
-                        </div>
-                    </div>
+
                 </div>
                 <!--Right Side-->
                 <div class="form-group col-md-6 col-sm-6 text-right flex-column">
@@ -120,12 +88,12 @@
                 <!--Button-->
                 <div class="form-group col-md-12 col-sm-12 text-center flex-column ">
                     <!--Back Button-->
-                    <a class="btn btn-dark"  tabindex="8" href="/branch">
+                    <a class="btn btn-dark"  tabindex="8" href="/brand">
                         <i class="fas fa-arrow-circle-left" style="font-size: 20px"></i>&nbsp;&nbsp;Back
                     </a>
                     <!--Save Button-->
                     <button class="btn btn-success ml-5" type="submit" tabindex="9">
-                        <i class="fa fa-save " style="font-size: 20px"></i>&nbsp;&nbsp;<span id="submit" th:text="${addStatus==true?'Save': 'Update'}"></span>
+                        <i class="fa fa-save " style="font-size: 20px"></i>&nbsp;&nbsp;<span id="submit"  data-th-text="${addStatus==true?'Save': 'Update'}"></span>
                     </button>
                     <!--Cancel Button-->
                     <button class="btn btn-warning ml-5" type="reset" tabindex="10">
@@ -136,7 +104,7 @@
                 <div class="form-row">
                     <label id="errorLabel" th:if="${#fields.hasErrors('*')}" th:text="'Errors: '">Errors: </label>
                     <ul>
-                        <li id="error" th:each="err: ${#fields.errors('*')}" th:text="${err}" class="error"></li>
+                        <li id="error"  data-th-each="err: ${#fields.errors('*')}"  data-th-text="${err}" class="error"></li>
                     </ul>
                 </div>
             </div>

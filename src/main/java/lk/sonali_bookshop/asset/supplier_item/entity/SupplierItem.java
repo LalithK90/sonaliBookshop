@@ -1,7 +1,6 @@
 package lk.sonali_bookshop.asset.supplier_item.entity;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
-import lk.sonali_bookshop.asset.common_asset.model.enums.LiveDead;
 import lk.sonali_bookshop.asset.item.entity.Item;
 import lk.sonali_bookshop.asset.supplier.entity.Supplier;
 import lk.sonali_bookshop.asset.supplier_item.entity.enums.ItemSupplierStatus;
@@ -27,9 +26,6 @@ public class SupplierItem extends AuditEntity {
 
   @Enumerated( EnumType.STRING )
   private ItemSupplierStatus itemSupplierStatus;
-
-  @Enumerated( EnumType.STRING )
-  private LiveDead liveDead;
 
   @ManyToOne( cascade = CascadeType.MERGE )
   private Item item;

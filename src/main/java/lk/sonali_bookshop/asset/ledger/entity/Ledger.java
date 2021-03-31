@@ -12,12 +12,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -34,11 +32,6 @@ public class Ledger extends AuditEntity {
     @Column( nullable = false, precision = 10, scale = 2 )
     private BigDecimal sellPrice;
 
-    @DateTimeFormat( pattern = "yyyy-MM-dd" )
-    private LocalDate manufactureDate;
-
-    @DateTimeFormat( pattern = "yyyy-MM-dd" )
-    private LocalDate expiredDate;
 
     @Enumerated( EnumType.STRING)
     private LiveDead liveDead;

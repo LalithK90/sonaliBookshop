@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <title>JN_Super</title>
 </head>
-<body>
-<!--Multi CSS-->
-<link data-th-href="@{/css/multi.css}" media="all" rel="stylesheet" type="text/css"/>
+<body class="sb-nav-fixed" >
+<nav data-th-replace="~{fragments/navBar :: navBarFragment}" ></nav >
 
-<nav data-th-replace="~{fragments/navBar :: navBarFragment}"></nav>
 <!--Heading Area -->
+<!--Multi CSS-->
+            <link data-th-href="@{/css/multi.css}" media="all" rel="stylesheet" type="text/css"/>
 <div class="container-fluid ">
-    <div class="row text-center formManagement border-info">
+    <div class="row text-center   ">
         <!--View List Button-->
         <div class="col">
             <a class="btn btn-primary" href="/purchaseOrder">
@@ -36,7 +36,7 @@
 </div>
 
 <!--Form Content - start -->
-<div class="container-fluid bg-info">
+<div class="container-fluid ">
     <!--Supplier Search - Start-->
     <div class="offset-1 flex-column"  data-th-if="${searchAreaShow==true}">
         <form class="form-inline" data-th-action="${'/purchaseOrder/find'}" data-th-object="${purchaseOrder}"
@@ -169,11 +169,14 @@
         <!--Supplier Item add Form - end-->
     </div>
 </div>
+
 <input  data-th-if="${supplierDetailShow==false}" data-th-value="${purchaseOrderItemUrl}" hidden
        id="purchaseOrderItemUrl" type="text">
 <!--Supplier Item add - end-->
-<footer data-th-replace="~{fragments/footer :: footerFragment}"></footer>
-<script data-th-replace="~{fragments/script :: scriptFragment}"></script>
+<div data-th-replace="~{fragments/footer :: footerFragment}"></div>
+<div data-th-replace="~{fragments/script :: scriptFragment}"></div>
+
+
 <script>
     //when change supplier search criteria that value set search value input
     $(document).ready(function () {

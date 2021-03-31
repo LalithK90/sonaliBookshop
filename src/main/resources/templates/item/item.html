@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <title>item</title>
 </head>
-<body>
+<body class="sb-nav-fixed">
 <nav  data-th-replace="~{fragments/navBar :: navBarFragment}"></nav>
+
 
 <!--heading Area-->
 <div class="container-fluid ">
-    <div class="row text-center formManagement border-info">
+    <div class="row text-center   ">
         <!-- New Item Button-->
         <div class="col">
             <a class="btn btn-success" data-th-if="${!#authorization.expression('hasRole(''ROLE_CASHIER'')')}" href="/item/add" tabindex="1"><i class="fas fa-plus" style="font-size: 20px"></i>&nbsp;&nbsp;New</a>&nbsp;
@@ -32,7 +33,7 @@
         </div>
     </div>
 </div>
-<div class="container-fluid bg-info formBorder text-center">
+<div class="container-fluid   text-center">
     <!--Table view-->
     <div class="col">
         <div class="col" id="itemListPresent"  data-th-if="${not #lists.isEmpty(items)}">
@@ -87,7 +88,7 @@
 
 <div   data-th-replace="~{fragments/footer :: footerFragment}"></div>
 <!--script include-->
-<script  data-th-replace="~{fragments/script :: scriptFragment}"></script>
+<div  data-th-replace="~{fragments/script :: scriptFragment}"></div>
 
 </body>
 </html>

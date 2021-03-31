@@ -3,7 +3,10 @@ package lk.sonali_bookshop.asset.item.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFilter;
+import lk.sonali_bookshop.asset.author.entity.Author;
+import lk.sonali_bookshop.asset.brand.entity.Brand;
 import lk.sonali_bookshop.asset.category.entity.Category;
+import lk.sonali_bookshop.asset.item_color.entity.ItemColor;
 import lk.sonali_bookshop.asset.common_asset.model.enums.LiveDead;
 import lk.sonali_bookshop.asset.item.entity.enums.ItemStatus;
 import lk.sonali_bookshop.asset.ledger.entity.Ledger;
@@ -50,6 +53,12 @@ public class Item extends AuditEntity {
     @ManyToOne
     private Category category;
 
+    @ManyToOne
+    private Brand brand;
+
+    @ManyToOne
+    private ItemColor itemColor;
+
     @OneToMany( mappedBy = "item" )
     private List< SupplierItem > supplierItem;
 
@@ -59,4 +68,10 @@ public class Item extends AuditEntity {
 
     @OneToMany( mappedBy = "item" )
     private List< PurchaseOrderItem > purchaseOrderItems;
+
+    @ManyToMany(mappedBy = "items")
+    @JoinTable(name = "item_author",
+            joinColumns = @JoinColumn(name = "item_id"),
+            inverseJoinColumns = @JoinColumn(name = "author_id"))
+    private List<Author> authors;
 }

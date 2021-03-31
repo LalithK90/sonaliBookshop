@@ -9,13 +9,17 @@ import java.util.List;
 
 @Service
 public class InvoiceLedgerService {
-private final InvoiceLedgerDao invoiceLedgerDao;
+  private final InvoiceLedgerDao invoiceLedgerDao;
 
   public InvoiceLedgerService(InvoiceLedgerDao invoiceLedgerDao) {
     this.invoiceLedgerDao = invoiceLedgerDao;
   }
 
   public List< InvoiceLedger> findByCreatedAtIsBetween(LocalDateTime from, LocalDateTime to) {
-  return invoiceLedgerDao.findByCreatedAtIsBetween(from,to);
+    return invoiceLedgerDao.findByCreatedAtIsBetween(from,to);
+  }
+
+  public InvoiceLedger findByWarrantyNumber(String warrantyNumber) {
+    return invoiceLedgerDao.findByWarrantyNumber(warrantyNumber);
   }
 }

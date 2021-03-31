@@ -12,11 +12,9 @@ import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
-
 @Service
 @CacheConfig(cacheNames = "ledger")
 public class LedgerService implements AbstractService< Ledger, Integer> {
@@ -55,9 +53,9 @@ public class LedgerService implements AbstractService< Ledger, Integer> {
 
     public List<Ledger> search(Ledger ledger) {
         ExampleMatcher matcher = ExampleMatcher
-                .matching()
-                .withIgnoreCase()
-                .withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING);
+            .matching()
+            .withIgnoreCase()
+            .withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING);
         Example<Ledger> ledgerExample = Example.of(ledger, matcher);
         return ledgerDao.findAll(ledgerExample);
     }
@@ -66,17 +64,15 @@ public class LedgerService implements AbstractService< Ledger, Integer> {
         return ledgerDao.findByItem(item);
     }
 
-    public Ledger findByItemAndAndExpiredDateAndSellPrice(Item item, LocalDate eDate, BigDecimal sellPrice) {
-    return ledgerDao.findByItemAndAndExpiredDateAndSellPrice( item, eDate, sellPrice);
+    public Ledger findByItemAndSellPrice(Item item,  BigDecimal sellPrice) {
+        return ledgerDao.findByItemAndSellPrice( item, sellPrice);
     }
 
     public List<Ledger> findByCreatedAtIsBetween(LocalDateTime startDate, LocalDateTime endDate) {
         return ledgerDao.findByCreatedAtBetween(startDate, endDate);
     }
 
-  public List<Ledger> findByExpiredDateBetween(LocalDate from, LocalDate to) {
-        return ledgerDao.findByExpiredDateBetween(from,to);
-  }
+
 
    /* public Ledger findByItem(Item item) {
         return ledgerDao.findByItem(item);

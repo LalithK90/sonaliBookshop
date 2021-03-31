@@ -1,5 +1,6 @@
 package lk.sonali_bookshop.asset.user_management.user.controller;
 
+
 import lk.sonali_bookshop.asset.common_asset.model.enums.LiveDead;
 import lk.sonali_bookshop.asset.employee.entity.Employee;
 import lk.sonali_bookshop.asset.employee.entity.enums.Designation;
@@ -59,14 +60,6 @@ public class UserController {
     model.addAttribute("employeeDetailShow", true);
     model.addAttribute("employeeNotFoundShow", false);
     model.addAttribute("roleList", roleService.findAll());
-        /*model.addAttribute("districtUrl", MvcUriComponentsBuilder
-                .fromMethodName(WorkingPlaceRestController.class, "getDistrict", "")
-                .build()
-                .toString());
-        model.addAttribute("stationUrl", MvcUriComponentsBuilder
-                .fromMethodName(WorkingPlaceRestController.class, "getStation", "")
-                .build()
-                .toString());*/
     return "user/addUser";
   }
 

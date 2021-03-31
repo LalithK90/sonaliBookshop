@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -89,35 +88,21 @@ public class PaymentController {
   @GetMapping( "/{id}" )
   public String addPaymentAmount(@PathVariable( "id" ) Integer id, Model model) {
     //payment need to make
+
     PurchaseOrder purchaseOrderNeedToPay = purchaseOrderService.findById(id);
 
-    //1. still not processed po 2. partially paid po
-    List< PurchaseOrder > purchaseOrdersDB =
-            purchaseOrderService.findByPurchaseOrderStatusAndSupplier(PurchaseOrderStatus.NOT_PROCEED,
-                    purchaseOrderNeedToPay.getSupplier());
-    List< PurchaseOrder > purchaseOrderNotPaid = new ArrayList<>();
+    List<Payment> payments =
+            paymentService.findByPurchaseOrder(purchaseOrderNeedToPay);
 
-    if ( purchaseOrdersDB != null ) {
-      for ( PurchaseOrder purchaseOrder : purchaseOrdersDB ) {
-        List< Payment > payments = paymentService.findByPurchaseOrder(purchaseOrder);
-        if ( payments != null ) {
-          BigDecimal paidAmount = BigDecimal.ZERO;
-          for ( Payment payment : payments ) {
-            paidAmount = operatorService.addition(paidAmount, payment.getAmount());
-          }
-          if ( goodReceivedNoteService.findByPurchaseOrder(purchaseOrder) != null ) {
-            purchaseOrder.setGrnAt(goodReceivedNoteService.findByPurchaseOrder(purchaseOrder).getCreatedAt());
-          } else {
-            purchaseOrder.setGrnAt(LocalDateTime.now());
-          }
-          purchaseOrder.setPaidAmount(paidAmount);
-          purchaseOrderNeedToPay.setNeedToPaid(operatorService.subtraction(purchaseOrder.getPrice(), paidAmount));
-        }
-        purchaseOrderNotPaid.add(purchaseOrder);
+    if (!payments.isEmpty()) {
+      List<BigDecimal> paidAmounts = new ArrayList<>();
+      for (Payment payment : payments) {
+        paidAmounts.add(payment.getAmount());
       }
+      purchaseOrderNeedToPay.setNeedToPaid(operatorService.subtraction(purchaseOrderNeedToPay.getPrice(), paidAmounts.stream().reduce(BigDecimal.ZERO, BigDecimal::add)));
     }
     model.addAttribute("payment", new Payment());
-    model.addAttribute("purchaseOrders", purchaseOrderNotPaid);
+    model.addAttribute("payments", payments);
     model.addAttribute("purchaseOrderNeedToPay", purchaseOrderNeedToPay);
     model.addAttribute("paymentMethods", PaymentMethod.values());
     return "payment/addPayment";

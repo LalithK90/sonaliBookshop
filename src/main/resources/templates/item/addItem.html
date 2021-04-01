@@ -82,6 +82,18 @@
                     </select >
                   </div >
                 </div >
+                <!--ISBN-->
+                <div class="form-row text-right" >
+                  <div class="col-md-4" >
+                    <label class="control-label" for="isbn" >ISBN :</label >
+                  </div >
+                  <div class="col-md-4" >
+                    <input id="isbn" data-th-field="*{isbn}" class="form-control" tabindex="6" type="text"
+                           required />
+                    <span data-th-errors="*{isbn}"
+                          data-th-if="${#fields.hasErrors('isbn')}" class="error" >Error Name</span >
+                  </div >
+                </div >
                 <!--Name-->
                 <div class="form-row text-right" >
                   <div class="col-md-4" >
@@ -92,6 +104,23 @@
                            required />
                     <span id="nameError" data-th-errors="*{name}"
                           data-th-if="${#fields.hasErrors('name')}" class="error" >Error Name</span >
+                  </div >
+                </div >
+                <!--Author -->
+                <div class="form-row text-right" >
+                  <div class="col-md-4" >
+                    <label class="control-label" for="author" >Author :</label >
+                  </div >
+                  <div class="col-md-4" >
+                    <select id="author" data-th-field="*{authors}" class="form-control" tabindex="4" style="font-size: large"
+                            required >
+                      <option value="" disabled >Please select</option >
+                      <option data-th-each="author : ${authors}"
+                              data-th-text="${author.name}"
+                              data-th-value="${author.id}"
+                      >
+                      </option >
+                    </select >
                   </div >
                 </div >
                 <!--ReOrder Point-->

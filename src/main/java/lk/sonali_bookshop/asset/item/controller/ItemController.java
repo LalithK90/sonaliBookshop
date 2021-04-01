@@ -1,6 +1,7 @@
 package lk.sonali_bookshop.asset.item.controller;
 
 
+import lk.sonali_bookshop.asset.author.service.AuthorService;
 import lk.sonali_bookshop.asset.category.controller.CategoryRestController;
 import lk.sonali_bookshop.asset.common_asset.model.enums.LiveDead;
 import lk.sonali_bookshop.asset.item.entity.Item;
@@ -27,14 +28,18 @@ import java.util.stream.Collectors;
 public class ItemController implements AbstractController< Item, Integer > {
   private final ItemService itemService;
   private final MakeAutoGenerateNumberService makeAutoGenerateNumberService;
+  private final AuthorService authorService;
 
   @Autowired
-  public ItemController(ItemService itemService, MakeAutoGenerateNumberService makeAutoGenerateNumberService) {
+  public ItemController(ItemService itemService, MakeAutoGenerateNumberService makeAutoGenerateNumberService,
+                        AuthorService authorService) {
     this.itemService = itemService;
     this.makeAutoGenerateNumberService = makeAutoGenerateNumberService;
+    this.authorService = authorService;
   }
 
   private String commonThings(Model model, Item item, Boolean addState) {
+    model.addAttribute("authors", authorService.findAll());
     model.addAttribute("statuses", ItemStatus.values());
     model.addAttribute("item", item);
     model.addAttribute("addStatus", addState);

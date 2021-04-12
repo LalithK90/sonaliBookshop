@@ -69,7 +69,7 @@ public class Item extends AuditEntity {
     @OneToMany( mappedBy = "item" )
     private List< PurchaseOrderItem > purchaseOrderItems;
 
-    @ManyToMany(mappedBy = "items")
+    @ManyToMany
     @JoinTable(name = "item_author",
             joinColumns = @JoinColumn(name = "item_id"),
             inverseJoinColumns = @JoinColumn(name = "author_id"))

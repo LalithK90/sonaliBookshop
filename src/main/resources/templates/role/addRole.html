@@ -6,19 +6,15 @@
 </head >
 <body class="sb-nav-fixed" >
 <nav data-th-replace="~{fragments/navBar :: navBarFragment}" ></nav >
-<div id="layoutSidenav" >
-  <div data-th-replace="~{fragments/sideNav :: sideNavFragment}" >
-  </div >
-  <div id="layoutSidenav_content" >
-    <main >
 
 
+<div class="card m-4">
       <div class="col-sm-12 flex-column " >
         <form id="form" class="form-horizontal" method="POST"
               data-th-action="${addStatus==true?'/role/add':'/role/update'}"
               data-th-object="${role}" >
           <div class="container-fluid  form-Border" >
-            <div class="row text-center formManagement border-info" >
+            <div class="row text-center   " >
               <div class="col" >
                 <a class="btn btn-success" href="/home" >
                   <i class="fa fa-home" style="font-size: 20px" ></i > &nbsp; Home
@@ -77,11 +73,11 @@
           </div >
         </form >
       </div >
-    </main >
+</div>
+
     <div data-th-replace="~{fragments/footer :: footerFragment}" ></div >
     <!--script include-->
     <div data-th-replace="~{fragments/script :: scriptFragment}" ></div >
-  </div >
-</div >
+
 </body >
 </html >

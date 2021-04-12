@@ -6,11 +6,7 @@
 </head>
 <body class="sb-nav-fixed">
 <nav  data-th-replace="~{fragments/navBar :: navBarFragment}"></nav>
-<div id="layoutSidenav">
-    <div  data-th-replace="~{fragments/sideNav :: sideNavFragment}">
-    </div>
-    <div id="layoutSidenav_content">
-        <main>
+
 <!--Form Content - start -->
 <div class="container-fluid  ">
     <div class="col-sm-12 flex-column ">
@@ -18,7 +14,7 @@
                data-th-object="${supplier}" method="POST" enctype="multipart/form-data">
             <div class="row">
                 <div class="container-fluid ">
-                    <div class="row text-center formManagement border-info">
+                    <div class="row text-center   ">
                         <!--View List Button-->
                         <div class="col">
                             <a href="/supplier" class="btn btn-success" tabindex="1">
@@ -54,6 +50,19 @@
                             <input type="text"  data-th-field="*{liveDead}" hidden>
                         </div>
                     </div>
+                    <!--item code-->
+                    <div class="form-row text-right" data-th-if="${addStatus==false}" >
+                        <div class="col-md-4" >
+                            <label class="control-label" for="code" >Supplier code :</label >
+                        </div >
+                        <div class="col-md-8" >
+                            <input id="code" data-th-field="*{code}" class="form-control" tabindex="4"
+                                   type="text" required readonly/>
+                            <span id="codeE" data-th-errors="*{code}"
+                                  data-th-if="${#fields.hasErrors('code')}" class="error" >Error Supplier code
+                            </span >
+                        </div >
+                    </div >
                     <!--Name-->
                     <div class="form-row text-right">
                         <div class="col-md-4">
@@ -82,7 +91,7 @@
                             <label class="control-label" for="contactOne">Contact No1 :</label>
                         </div>
                         <div class="col-md-8">
-                            <input id="contactOne" data-th-field="*{contactOne}" class="form-control mobile" tabindex="5" type="text" maxlength="10" min="9" required/>
+                            <input id="contactOne" data-th-field="*{contactOne}" class="form-control mobile" tabindex="5" type="number" maxlength="10" min="9" required/>
                             <span class="error"  data-th-errors="*{contactOne}"
                                    data-th-if="${#fields.hasErrors('contactOne')}" id="mobileOneError">Error Mobile Number</span>
                         </div>
@@ -93,7 +102,7 @@
                             <label class="control-label" for="contactTwo">Contact No2 :</label>
                         </div>
                         <div class="col-md-8">
-                            <input id="contactTwo" data-th-field="*{contactTwo}" class="form-control mobile" tabindex="6" type="text" maxlength="10" min="9"/>
+                            <input id="contactTwo" data-th-field="*{contactTwo}" class="form-control mobile" tabindex="6" type="number" maxlength="10" min="9"/>
                             <span class="error"  data-th-errors="*{contactTwo}"
                                    data-th-if="${#fields.hasErrors('contactTwo')}" id="mobileTwoError">Error Mobile Number</span>
                         </div>
@@ -170,11 +179,10 @@
             </div>
         </form>
     </div>
-</div></main>
+</div>
 <div   data-th-replace="~{fragments/footer :: footerFragment}"></div>
 <!--script include-->
-<script  data-th-replace="~{fragments/script :: scriptFragment}"></script>
-    </div>
-</div>
+<div  data-th-replace="~{fragments/script :: scriptFragment}"></div>
+
 </body>
 </html>

@@ -1,7 +1,6 @@
 package lk.sonali_bookshop.asset.employee.entity;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
-import lk.sonali_bookshop.asset.branch.entity.Branch;
 import lk.sonali_bookshop.asset.common_asset.model.FileInfo;
 import lk.sonali_bookshop.asset.common_asset.model.enums.CivilStatus;
 import lk.sonali_bookshop.asset.common_asset.model.enums.Gender;
@@ -80,9 +79,6 @@ public class Employee extends AuditEntity {
 
     @DateTimeFormat( pattern = "yyyy-MM-dd" )
     private LocalDate dateOfAssignment;
-
-    @ManyToOne
-    private Branch branch;
 
 
     @Transient

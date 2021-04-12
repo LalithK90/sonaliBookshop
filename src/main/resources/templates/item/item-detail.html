@@ -6,15 +6,10 @@
 </head >
 <body class="sb-nav-fixed" >
 <nav data-th-replace="~{fragments/navBar :: navBarFragment}" ></nav >
-<div id="layoutSidenav" >
-  <div data-th-replace="~{fragments/sideNav :: sideNavFragment}" >
-  </div >
-  <div id="layoutSidenav_content" >
-    <main >
 
       <!--heading Area-->
       <div class="container-fluid " >
-        <div class="row text-center formManagement border-info" >
+        <div class="row text-center   " >
           <!--View List Button-->
           <div class="col" >
             <a href="/item" class="btn btn-primary" tabindex="2" >
@@ -52,14 +47,6 @@
                   <p id="id" data-th-text="${itemDetail.id}" class="display_detail" ></p >
                 </div >
               </div >
-              <!--Code-->
-              <!--<div class="form-row text-right">
-                  <div class="col-md-4">
-                      <label class="control-label" for="departmentIdNumber">Depart Id No :</label>
-                  </div>
-                  <div class="col-md-8">
-                      <p id="departmentIdNumber"  data-th-text="${itemDetail.departmentIdNumber}" class="display_detail"></p></div>
-              </div>-->
               <!--Main Category-->
               <div class="form-row text-right" >
                 <div class="col-md-4" >
@@ -77,6 +64,27 @@
                 </div >
                 <div class="col-md-8" >
                   <p id="subCategory" data-th-text="${itemDetail.category.name}"
+                     class="display_detail" ></p >
+                </div >
+              </div >
+              <!--Brand-->
+              <div class="form-row text-right" >
+                <div class="col-md-4" >
+                  <label class="control-label" for="brand" >Brand :</label >
+                </div >
+                <div class="col-md-8" >
+                  <p id="brand" data-th-text="${itemDetail.brand.name}"
+                     class="display_detail" ></p >
+                </div >
+              </div >
+
+              <!--Sub Category-->
+              <div class="form-row text-right" >
+                <div class="col-md-4" >
+                  <label class="control-label" for="itemColor" >Item Color :</label >
+                </div >
+                <div class="col-md-8" >
+                  <p id="itemColor" data-th-text="${itemDetail.itemColor.name}"
                      class="display_detail" ></p >
                 </div >
               </div >
@@ -156,7 +164,7 @@
     </main >
     <div data-th-replace="~{fragments/footer :: footerFragment}" ></div >
     <!--script include-->
-    <script data-th-replace="~{fragments/script :: scriptFragment}" ></script >
+    <div data-th-replace="~{fragments/script :: scriptFragment}" ></div >
   </div >
 </div >
 

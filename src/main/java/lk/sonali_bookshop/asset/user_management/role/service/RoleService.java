@@ -11,6 +11,7 @@ import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -38,20 +39,20 @@ public class RoleService implements AbstractService< Role, Integer > {
 
 
     @Caching( evict = {@CacheEvict( value = "role", allEntries = true )},
-            put = {@CachePut( value = "role", key = "#role.id" )} )
-    public Role persist(Role role) {
-        role.setRoleName(role.getRoleName().toUpperCase());
-        if ( role.getId()==null ){
-            role.setLiveDead(LiveDead.ACTIVE);
+            put = {@CachePut( value = "role", key = "#role.id" )} )//Link to ApplicationCreateResetController.java
+    public Role persist(Role role) {//(save role)
+        role.setRoleName(role.getRoleName().toUpperCase());//set role name as upper case
+        if ( role.getId()==null ){//look is it null
+            role.setLiveDead(LiveDead.ACTIVE);//liveDead check
         }
-        return roleDao.save(role);
+        return roleDao.save(role);//give role as a save method(return role)
     }
 
     @CacheEvict( allEntries = true )
     public boolean delete(Integer id) {
-        Role role =roleDao.getOne(id);
+        Role role =roleDao.getOne(id);//look in role dao(user_management-role-dao-RoleDao)
         role.setLiveDead(LiveDead.STOP);
-        roleDao.save(role);
+        roleDao.save(role);//role save
         return true;
     }
 
@@ -70,3 +71,5 @@ public class RoleService implements AbstractService< Role, Integer > {
         return roleDao.findByRoleName(roleName);
     }
 }
+
+//spring framework - JpaRepository

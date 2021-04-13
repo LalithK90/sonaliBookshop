@@ -1,6 +1,5 @@
 package lk.sonali_bookshop.asset.employee.controller;
 
-
 import lk.sonali_bookshop.asset.common_asset.model.enums.*;
 import lk.sonali_bookshop.asset.employee.entity.Employee;
 import lk.sonali_bookshop.asset.employee.entity.EmployeeFiles;
@@ -121,6 +120,15 @@ public class EmployeeController {
   @PostMapping( value = {"/save", "/update"} )
   public String addEmployee(@Valid @ModelAttribute Employee employee, BindingResult result, Model model
                            ) {
+    Employee employeeNic = null;
+    if ( employee.getNic() != null && employee.getId() == null ) {
+      employeeNic = employeeService.findByNic(employee.getNic());
+    }
+    if ( employeeNic != null ) {
+      ObjectError error = new ObjectError("employee",
+              "There is employee on same nic number . <br> System message -->");
+      result.addError(error);
+    }
     if ( result.hasErrors() ) {
       model.addAttribute("addStatus", true);
       model.addAttribute("employee", employee);

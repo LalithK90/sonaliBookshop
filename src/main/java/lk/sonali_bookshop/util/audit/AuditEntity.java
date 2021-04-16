@@ -24,7 +24,7 @@ import java.time.LocalDateTime;
 // Java objects to and from JSON.
 public abstract class AuditEntity {
 
-    @Id
+    @Id //annotation
     @GeneratedValue( strategy = GenerationType.IDENTITY )
     private Integer id;
 
@@ -38,12 +38,12 @@ public abstract class AuditEntity {
     @Column( updatable = false, nullable = false )
     private String createdBy;
 
-    @LastModifiedDate
+    @LastModifiedDate //we ca see this annotation only in here
     @Basic( optional = false )
     @Column( nullable = false )
     private LocalDateTime updatedAt;
 
-    @LastModifiedBy
+    @LastModifiedBy //we ca see this annotation only in here
     @Basic( optional = false )
     @Column( nullable = false )
     private String updatedBy;

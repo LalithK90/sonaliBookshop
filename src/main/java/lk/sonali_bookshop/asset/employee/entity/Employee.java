@@ -26,8 +26,8 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonFilter( "Employee" )
-public class Employee extends AuditEntity {
-
+public class Employee extends AuditEntity { //extend to AuditEntity (sir put this name-mean-object is correct
+    //configuration-util-AuditEntity
     @Column(unique = true)
     private String code;
 

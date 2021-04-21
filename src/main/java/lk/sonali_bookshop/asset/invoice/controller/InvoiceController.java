@@ -17,15 +17,22 @@ import lk.sonali_bookshop.asset.ledger.entity.Ledger;
 import lk.sonali_bookshop.asset.ledger.service.LedgerService;
 import lk.sonali_bookshop.util.service.DateTimeAgeService;
 import lk.sonali_bookshop.util.service.MakeAutoGenerateNumberService;
+import lk.sonali_bookshop.util.service.TwilioMessageService;
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 
@@ -84,7 +91,7 @@ public class InvoiceController {
     //send not expired and not zero quantity
     model.addAttribute("ledgers", ledgerService.findAll()
         .stream()
-        .filter(x -> 0 < Integer.parseInt(x.getQuantity()) && x.getExpiredDate().isAfter(LocalDate.now()))
+        .filter(x -> 0 < Integer.parseInt(x.getQuantity()))
         .collect(Collectors.toList()));
     return "invoice/addInvoice";
   }
@@ -182,12 +189,3 @@ public class InvoiceController {
 
 }
 
-
-  @GetMapping( "/remove/{id}" )
-  public String removeInvoice(@PathVariable( "id" ) Integer id) {
-    Invoice invoice = invoiceService.findById(id);
-    invoice.setInvoiceValidOrNot(InvoiceValidOrNot.NOTVALID);
-    invoiceService.persist(invoice);
-    return "redirect:/invoice";
-  }
-}

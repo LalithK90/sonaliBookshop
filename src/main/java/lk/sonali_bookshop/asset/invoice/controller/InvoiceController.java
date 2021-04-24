@@ -61,7 +61,7 @@ public class InvoiceController {
     this.twilioMessageService = twilioMessageService;
   }
 
-  @GetMapping
+  @GetMapping  //link to invoice.html
   public String invoice(Model model) {
     model.addAttribute("invoices",
                        invoiceService.findByCreatedAtIsBetween(dateTimeAgeService.dateTimeToLocalDateStartInDay(dateTimeAgeService.getPastDateByMonth(3)), dateTimeAgeService.dateTimeToLocalDateEndInDay(LocalDate.now())));

@@ -115,7 +115,7 @@
                   <th >Index</th >
                   <th >Number</th >
                   <th > Amount</th >
-                  <th > Created By</th >
+                  <th > Created By</th ><!--who is create the invoice-->
                   <th > Date of Invoice</th >
                   <th >View</th >
                   <th data-th-if="${#authorization.expression('hasRole(''ROLE_MANAGER'')')}" > Delete Invoice
@@ -123,7 +123,7 @@
                 </tr >
                 </thead >
                 <tbody >
-                <tr data-th-each="invoice, rowCount : ${invoices}" >
+                <tr data-th-each="invoice, rowCount : ${invoices}" ><!--invoices-link to InvoiceController.java--><!--invoice link to Invoice.java in the entity-->
                   <td data-th-text="${rowCount.count}" ></td >
                   <td data-th-text="${invoice.code}" ></td >
                   <td data-th-text="${invoice.totalAmount}" ></td >
@@ -133,7 +133,7 @@
                           class="fa fa-folder-open" ></i >&nbsp;View</a >&nbsp;
                   </td >
                   <td data-th-if="${#authorization.expression('hasRole(''ROLE_MANAGER'')')}" ><a
-                          class="btn btn-sm btn-danger" data-th-href="${'/invoice/remove/' + invoice.id}" >Delete</a >
+                          class="btn btn-sm btn-danger" data-th-href="${'/invoice/remove/' + invoice.id}" >Cancel</a >
                   </td >
                 </tr >
                 </tbody >

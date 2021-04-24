@@ -67,27 +67,6 @@
                      class="display_detail" ></p >
                 </div >
               </div >
-              <!--Brand-->
-             <div class="form-row text-right" >
-                <div class="col-md-4" >
-                  <label class="control-label" for="brand" >Brand :</label >
-                </div >
-                <div class="col-md-8" >
-                  <p id="brand" data-th-text="${itemDetail.brand.name}"
-                     class="display_detail" ></p >
-                </div >
-              </div >
-
-              <!--Sub Category-->
-              <div class="form-row text-right" >
-                <div class="col-md-4" >
-                  <label class="control-label" for="itemColor" >Item Color :</label >
-                </div >
-                <div class="col-md-8" >
-                  <p id="itemColor" data-th-text="${itemDetail.itemColor.name}"
-                     class="display_detail" ></p >
-                </div >
-              </div >
               <!--Name-->
               <div class="form-row text-right" >
                 <div class="col-md-4" >
@@ -161,12 +140,9 @@
           </div >
         </div >
       </div >
-    </main >
     <div data-th-replace="~{fragments/footer :: footerFragment}" ></div >
     <!--script include-->
     <div data-th-replace="~{fragments/script :: scriptFragment}" ></div >
-  </div >
-</div >
 
 </body >
 </html >

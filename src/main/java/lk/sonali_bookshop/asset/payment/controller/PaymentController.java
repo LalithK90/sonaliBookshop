@@ -99,7 +99,11 @@ public class PaymentController {
       for (Payment payment : payments) {
         paidAmounts.add(payment.getAmount());
       }
-      purchaseOrderNeedToPay.setNeedToPaid(operatorService.subtraction(purchaseOrderNeedToPay.getPrice(), paidAmounts.stream().reduce(BigDecimal.ZERO, BigDecimal::add)));
+      if (! paidAmounts.isEmpty() ) {
+        purchaseOrderNeedToPay.setNeedToPaid(operatorService.subtraction(purchaseOrderNeedToPay.getPrice(), paidAmounts.stream().reduce(BigDecimal.ZERO, BigDecimal::add)));
+      }else {
+        purchaseOrderNeedToPay.setNeedToPaid(BigDecimal.ZERO);
+      }
     }
     model.addAttribute("payment", new Payment());
     model.addAttribute("payments", payments);

@@ -19,7 +19,5 @@ public class InvoiceLedgerService {
     return invoiceLedgerDao.findByCreatedAtIsBetween(from,to);
   }
 
-  public InvoiceLedger findByWarrantyNumber(String warrantyNumber) {
-    return invoiceLedgerDao.findByWarrantyNumber(warrantyNumber);
-  }
+
 }

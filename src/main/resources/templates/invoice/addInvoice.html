@@ -599,7 +599,7 @@
 
     }
 
-    $("#amountTendered").bind('focusout', function () {
+    $("#amountTendered").bind('keyup', function () {
         if (!$("#discountRatio").val()) {
             swal({
                 title: "Please Select Discount",

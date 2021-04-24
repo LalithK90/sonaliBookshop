@@ -92,56 +92,6 @@
                     </select >
                   </div >
                 </div >
-                <!--Brand -->
-                <div class="form-row text-right" >
-                  <div class="col-md-4" >
-                    <label class="control-label" for="brand" >Brand :</label >
-                  </div >
-                  <div class="col-md-4" >
-                    <select id="brand" data-th-field="*{brand}" class="form-control" tabindex="4" style="font-size: large"
-                            required >
-                      <option value="" disabled >Please select</option >
-                      <option data-th-each="brand : ${brands}"
-                              data-th-text="${brand.name}"
-                              data-th-value="${brand.id}"
-                      >
-                      </option >
-                    </select >
-                  </div >
-                </div >
-                <!--Item Color -->
-                <div class="form-row text-right" >
-                  <div class="col-md-4" >
-                    <label class="control-label" for="itemColor" >Color :</label >
-                  </div >
-                  <div class="col-md-4" >
-                    <select id="itemColor" data-th-field="*{itemColor}" class="form-control" tabindex="4" style="font-size: large"
-                            required >
-                      <option value="" disabled >Please select</option >
-                      <option data-th-each="itemColor : ${itemColors}"
-                              data-th-text="${itemColor.name}"
-                              data-th-value="${itemColor.id}"
-                      >
-                      </option >
-                    </select >
-                  </div >
-                </div ><!--Warranty Period-->
-               <!-- <div class="form-row text-right">
-                  <div class="col-md-4">
-                    <label class="control-label" for="warrantyPeriod">Warranty Period :</label>
-                  </div>
-                  <div class="col-md-4">
-                    <select id="warrantyPeriod" class="form-control" tabindex="4"
-                            required>
-                      <option value="" disabled>Please select</option>
-                      <option  data-th-each="warrantyPeriod : ${warrantyPeriod}"
-                               data-th-text="${warrantyPeriod.warrantyPeriod}"
-                               data-th-value="${warrantyPeriod}"
-                      >
-                      </option>
-                    </select>
-                  </div>
-                </div>-->
                 <!--Name-->
                 <div class="form-row text-right" >
                   <div class="col-md-4" >

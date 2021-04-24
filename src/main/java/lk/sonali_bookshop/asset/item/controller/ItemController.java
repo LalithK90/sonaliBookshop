@@ -1,7 +1,6 @@
 package lk.sonali_bookshop.asset.item.controller;
 
 
-import lk.sonali_bookshop.asset.brand.service.BrandService;
 import lk.sonali_bookshop.asset.category.controller.CategoryRestController;
 import lk.sonali_bookshop.asset.common_asset.model.enums.LiveDead;
 import lk.sonali_bookshop.asset.item.entity.Item;
@@ -9,7 +8,6 @@ import lk.sonali_bookshop.asset.item.entity.enums.ItemStatus;
 import lk.sonali_bookshop.asset.item.entity.enums.MainCategory;
 import lk.sonali_bookshop.asset.item.entity.enums.WarrantyPeriod;
 import lk.sonali_bookshop.asset.item.service.ItemService;
-import lk.sonali_bookshop.asset.item_color.service.ItemColorService;
 import lk.sonali_bookshop.util.interfaces.AbstractController;
 import lk.sonali_bookshop.util.service.MakeAutoGenerateNumberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,24 +28,19 @@ import java.util.stream.Collectors;
 public class ItemController implements AbstractController< Item, Integer > {
   private final ItemService itemService;
   private final MakeAutoGenerateNumberService makeAutoGenerateNumberService;
-  private final ItemColorService itemColorService;
-  private final BrandService brandService;
+
 
   @Autowired
-  public ItemController(ItemService itemService, MakeAutoGenerateNumberService makeAutoGenerateNumberService,
-                        ItemColorService itemColorService, BrandService brandService) {
+  public ItemController(ItemService itemService, MakeAutoGenerateNumberService makeAutoGenerateNumberService
+                       ) {
     this.itemService = itemService;
     this.makeAutoGenerateNumberService = makeAutoGenerateNumberService;
-    this.itemColorService = itemColorService;
-    this.brandService = brandService;
   }
 
   private String commonThings(Model model, Item item, Boolean addState) {
     model.addAttribute("statuses", ItemStatus.values());
     model.addAttribute("item", item);
-    model.addAttribute("itemColors", itemColorService.findAll());
     model.addAttribute("warrantyPeriod", WarrantyPeriod.values());
-    model.addAttribute("brands",brandService.findAll() );
     model.addAttribute("addStatus", addState);
     model.addAttribute("mainCategories", MainCategory.values());
     model.addAttribute("urlMainCategory", MvcUriComponentsBuilder

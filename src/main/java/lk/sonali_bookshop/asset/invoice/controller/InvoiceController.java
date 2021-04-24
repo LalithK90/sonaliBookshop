@@ -50,7 +50,7 @@ public class InvoiceController {
     this.makeAutoGenerateNumberService = makeAutoGenerateNumberService;
   }
 
-  @GetMapping
+  @GetMapping  //link to invoice.html
   public String invoice(Model model) {
     model.addAttribute("invoices",
                        invoiceService.findByCreatedAtIsBetween(dateTimeAgeService.dateTimeToLocalDateStartInDay(dateTimeAgeService

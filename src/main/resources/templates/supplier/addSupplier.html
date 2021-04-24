@@ -13,7 +13,7 @@
         <form id="form" class="form-horizontal"  data-th-action="${addStatus==true?'/supplier/save':'/supplier/update'}"
                data-th-object="${supplier}" method="POST" enctype="multipart/form-data">
             <div class="row">
-                <div class="container-fluid bg-secondary form-Border ">
+                <div class="container-fluid">
                     <div class="row text-center   ">
                         <!--Home Button-->
                         <div class="col">
@@ -23,11 +23,11 @@
                         </div>
                         <!--Form Name-->
                         <div class="col">
-                            <h2 class="text-light text-center">
+                            <h4 class="text text-center">
                                 <strong>
                                     <span  data-th-text="${addStatus==true?'Add New Supplier':'Update Supplier Details'}"></span>
                                 </strong>
-                            </h2>
+                            </h4>
                         </div>
                         <!--View List Button-->
                         <div class="col">

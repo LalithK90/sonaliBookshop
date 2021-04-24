@@ -73,12 +73,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
   @Override
   protected void configure(HttpSecurity http) throws Exception {
-    http.csrf().disable();
-    http.authorizeRequests().antMatchers("/").permitAll();
+/*    http.csrf().disable();
+    http.authorizeRequests().antMatchers("/").permitAll();*/
     // For developing easy to give permission all lin
 // {"ADMIN","PROCUREMENT_MANAGER","CASHIER","MANAGER","HR_MANAGER","ACCOUNT_MANAGER"}
 
- /*   http.authorizeRequests(
+    http.authorizeRequests(
         authorizeRequests ->
             authorizeRequests
                 .antMatchers(ALL_PERMIT_URL).permitAll()
@@ -132,7 +132,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .headers()
         .addHeaderWriter(new XFrameOptionsHeaderWriter(XFrameOptionsHeaderWriter.XFrameOptionsMode.SAMEORIGIN));
 
-*/
   }
 }
 

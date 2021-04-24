@@ -348,8 +348,8 @@
                   <!--Save Button-->
                   <button class="btn btn-success ml-5 float-right" tabindex="12" type="submit" >
                     <i class="fa fa-save" style="font-size: 20px" ></i >&nbsp;&nbsp;<span
-                          data-th-text="${'Save'}"
-                          id="submit" ></span >
+                        data-th-text="${'Save'}"
+                        id="submit" ></span >
                   </button >
                 </div >
               </div >
@@ -360,49 +360,51 @@
         </div >
       </div >
     </main >
-    <!--/* footer is */-->
-    <div data-th-replace="~{fragments/footer :: footerFragment}" ></div >
-    <!--/* script is included */-->
-    <div data-th-replace="~{fragments/script :: scriptFragment}" ></div >
-    <script data-th-src="@{/js/combo-box-search.js}" ></script >
-    <script >
-      //removes the "active" class to .popup and .popup-content when the "Close" button is clicked
-      $("#close, .popup-overlay body").on("click", function () {
+  </div >
+</div >
+<!--/* footer is */-->
+<div data-th-replace="~{fragments/footer :: footerFragment}" ></div >
+<!--/* script is included */-->
+<div data-th-replace="~{fragments/script :: scriptFragment}" ></div >
+<script data-th-src="@{/js/combo-box-search.js}" ></script >
+<script >
+    //removes the "active" class to .popup and .popup-content when the "Close" button is clicked
+    $("#close, .popup-overlay body").on("click", function () {
         $(".popup-overlay, .popup-content").removeClass("active");
         modalValueZero();
-      });
+    });
 
-      $(document).ready(function () {
+    $(document).ready(function () {
         $("#btnshow").hide();
         $("#item").select2({
-          data: $(this).val()
+            data: $(this).val()
         }).change(() => {
-          let finalUrl = $('#ledgerItemURL').val() + $("#item").val();
-          $.ajax({
-            type: 'GET',
-            url: finalUrl,
-            success: function (resp) {
-              popUpDataSet(resp);
-            },
-            error: function (err) {
-              console.log(err);
-            }
-          });
+            let finalUrl = $('#ledgerItemURL').val() + $("#item").val();
+            $.ajax({
+                type: 'GET',
+                url: finalUrl,
+                success: function (resp) {
+                    popUpDataSet(resp);
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            });
 
         });
 
         $("#customer").select2({
-          data: $(this).val()
+            data: $(this).val()
         });
         $("input[value='CASH']").prop('checked', true);
         showHideContent();
         $("input[value='NOT_PRINTED']").prop('checked', true);
 
-      });
+    });
 
-      let selectedInvoiceLedger = [];
+    let selectedInvoiceLedger = [];
 
-      function popUpDataSet(resp) {
+    function popUpDataSet(resp) {
         $("#ledgerId").val(resp.id);
         $("#itemName").val(resp.item.name);
         $("#abQuantity").val(resp.quantity);
@@ -410,57 +412,59 @@
         $(".popup-overlay, .popup-content").addClass("active");
         addButtonDisable();
 
-        if (resp.mainCategory === "MOBILE_PHONE") {
-          $("#requestCount").val(1).prop("disabled", true);
-          $("#warrantyBlock").show();
-          totalPriceCard();
+        $("#warrantyBlock").hide();
+        // totalPriceCard();
+        /*if (resp.mainCategory === "MOBILE_PHONE") {
+            $("#requestCount").val(1).prop("disabled", true);
+            $("#warrantyBlock").show();
+            totalPriceCard();
         } else {
-          $("#warrantyBlock").hide();
-        }
-      }
+            $("#warrantyBlock").hide();
+        }*/
+    }
 
-      function addButtonDisable() {
+    function addButtonDisable() {
         let requestInputValue = $('#requestCount').val();
         if (requestInputValue) {
-          $("#addModal").show();
+            $("#addModal").show();
         } else {
-          $("#addModal").hide();
+            $("#addModal").hide();
         }
-      }
+    }
 
-      $('#addModal').bind('click', function () {
+    $('#addModal').bind('click', function () {
         let receivedLedgerItem = {};// ledgerItem
         receivedLedgerItem.id = $("#ledgerId").val();
         receivedLedgerItem.name = $("#itemName").val();
         receivedLedgerItem.quantity = $("#abQuantity").val();
         receivedLedgerItem.sellPrice = $("#sellPriceModal").val();
         receivedLedgerItem.requestCount = $("#requestCount").val();
-        let warrantyNumber = $("#warrantyNumber").val();
-        if (warrantyNumber.length !== 0) {
-          receivedLedgerItem.warrantyNumber = warrantyNumber;
-        } else {
-          receivedLedgerItem.warrantyNumber = "No warranty";
-        }
+        /* let warrantyNumber = $("#warrantyNumber").val();
+         if (warrantyNumber.length !== 0) {
+             receivedLedgerItem.warrantyNumber = warrantyNumber;
+         } else {
+             receivedLedgerItem.warrantyNumber = "No warranty";
+         }*/
         receivedLedgerItem.totalModal = $("#totalModal").val();// to need to add
         selectedInvoiceLedger.push(receivedLedgerItem);
         $(".popup-overlay, .popup-content").removeClass("active");
         optionElementRemove('#item');
         itemAddToItemSelectTable();
         modalValueZero();
-      });
+    });
 
-      function itemAddToItemSelectTable() {
+    function itemAddToItemSelectTable() {
         let html = "";
         for (let i = 0; i < selectedInvoiceLedger.length; i++) {
-          html += tableRowCreate(i, selectedInvoiceLedger[i]);
+            html += tableRowCreate(i, selectedInvoiceLedger[i]);
         }
         //$("#myTable tbody tr:last").after(html);
 
         $("#myTable tbody ").html(html);
         totalPrice();
-      }
+    }
 
-      function tableRowCreate(id, invoiceLedger) {
+    function tableRowCreate(id, invoiceLedger) {
         return `<tr >
                           <th >${id + 1}
                           <input type="hidden" id="id${id}" class="form-control"  name="invoiceLedgers[${id}].ledger.id" value="${invoiceLedger.id}">
@@ -478,76 +482,73 @@
                           <input type="number" id="rq${id}" class="form-control" onchange="lineTotalCalculateByLine(this)"  onkeyup="lineTotalCalculateByLine(this)" name="invoiceLedgers[${id}].quantity" value="${invoiceLedger.requestCount}" readonly>
                           </th >
                           <th >
-                          <input type="number" id="wr${id}" class="form-control warrantyNumber" name="invoiceLedgers[${id}].warrantyNumber" value="${invoiceLedger.warrantyNumber}" readonly>
-                          </th >
-                          <th >
                           <input type="number" id="lt${id}" class="form-control lineTotal" name="invoiceLedgers[${id}].lineTotal" value="${invoiceLedger.totalModal}" readonly>
                           </th >
                           <th>
                           <button type="button" id="rm${id}" class="btn btn-danger" onclick="removeItem(this)">Remove</button>
                           </th>
                         </tr >`
-      }
+    }
 
-      function removeItem(obj) {
+    function removeItem(obj) {
         let selectedFiledId = obj.getAttribute('id').slice(2);
         //id,name,sellPrice,abQut,exDate
         $("#item").append(optionTagAdd(
-                $(`#id${selectedFiledId}`).val(),
-                $(`#na${selectedFiledId}`).val(),
-                $(`#sp${selectedFiledId}`).val(),
-                $(`#aq${selectedFiledId}`).val(),
-                $(`#ex${selectedFiledId}`).val()));
+            $(`#id${selectedFiledId}`).val(),
+            $(`#na${selectedFiledId}`).val(),
+            $(`#sp${selectedFiledId}`).val(),
+            $(`#aq${selectedFiledId}`).val(),
+            $(`#ex${selectedFiledId}`).val()));
         selectedInvoiceLedger = selectedInvoiceLedger.filter(function (obj) {
-          return obj.id !== $(`#id${selectedFiledId}`).val();
+            return obj.id !== $(`#id${selectedFiledId}`).val();
         })
         document.getElementById("myTable").deleteRow(obj.parentNode.parentNode.rowIndex);
         totalPrice();
-      }
+    }
 
-      //calculate line total
-      function lineTotalCalculateByLine(obj) {
+    //calculate line total
+    function lineTotalCalculateByLine(obj) {
         let selectedFiledId = obj.getAttribute('id').slice(2);
         let price = $(`#sp${selectedFiledId}`).val();
         $(`#lt${selectedFiledId}`).val(price * obj.value);
         totalPrice();
-      }
+    }
 
-      function totalPrice() {
+    function totalPrice() {
         let lineTotal = document.getElementsByClassName("lineTotal");
         let totalValue = 0;
         for (let i = 0; i < lineTotal.length; i++) {
-          totalValue += parseFloat(lineTotal[i].value);
+            totalValue += parseFloat(lineTotal[i].value);
         }
         $("#total").val(totalValue);
         $("#totalAmount").val(totalValue);
         if ($("#discountRatio").find('option:selected').text() >= 0) {
-          discountRatio();
+            discountRatio();
         }
-      }
+    }
 
-      //modal total mount calculate
-      $("#requestCount").bind('keyup keydown change ', function () {
+    //modal total mount calculate
+    $("#requestCount").bind('keyup', function () {
         totalPriceCard();
-      });
+    });
 
-      function totalPriceCard() {
+    function totalPriceCard() {
         let requestCountVal = $("#requestCount").val();
         let abQuantity = $("#abQuantity").val();
 
-        if (parseFloat(abQuantity) >= parseFloat(requestCountVal)) {
-          $("#totalModal").val(parseFloat($("#sellPriceModal").val()) * parseFloat(requestCountVal));
-          addButtonDisable();
+        if (parseFloat(abQuantity) >= parseFloat(requestCountVal) && !isNaN($("#requestCount").val())) {
+            $("#totalModal").val(parseFloat($("#sellPriceModal").val()) * parseFloat(requestCountVal));
+            addButtonDisable();
         } else {
-          swal({
-            title: "Request more than available   ",
-            icon: "warning",
-          });
+            swal({
+                title: "Request more than available   ",
+                icon: "warning",
+            });
         }
-      }
+    }
 
-      //modal all values zero
-      function modalValueZero() {
+    //modal all values zero
+    function modalValueZero() {
         $("#ledgerId").val(0);
         $("#itemName").val('');
         $("#abQuantity").val(0);
@@ -555,75 +556,99 @@
         $("#sellPriceModal").val(0.00);
         $("#requestCount").val('');
         $("#totalModal").val(0.00);
-      }
+    }
 
-      $("input[name='paymentMethod']").bind('change', function () {
+    $("input[name='paymentMethod']").bind('change', function () {
         showHideContent();
-      });
+    });
 
-      function showHideContent() {
+    function showHideContent() {
         let paymentMethodValue = $("input[name='paymentMethod']:checked").val();
         if (paymentMethodValue === 'CASH') {
-          $("#bankNameBlock").hide();
-          $("#cashPaymentBlock").show();
-          $("#amountTendered, #balance").prop('required', true);
+            $("#bankNameBlock").hide();
+            $("#cashPaymentBlock").show();
+            $("#amountTendered, #balance").prop('required', true);
         } else {
-          $("#cashPaymentBlock").hide();
-          $("#bankNameBlock").show();
-          $("#bankName, #cardNumber").prop('required', true);
+            $("#cashPaymentBlock").hide();
+            $("#bankNameBlock").show();
+            $("#bankName, #cardNumber").prop('required', true);
         }
-      }
+    }
 
-      $('#discountRatio').bind('change', function () {
+    $('#discountRatio').bind('change', function () {
         let total = $("#total").val();
         if (total <= 0 || total === null) {
-          swal({
-            title: "Before select discount have to select item  ",
-            icon: "warning",
-          });
+            swal({
+                title: "Before select discount have to select item  ",
+                icon: "warning",
+            });
         }
         discountRatio();
-      });
+    });
 
-      function discountRatio() {
+    function discountRatio() {
         let discountRatio = parseFloat($("#discountRatio").find('option:selected').text());
         let total = parseFloat($("#total").val());
         let discountAmount = total * discountRatio / 100;
         $("#totalAmount").val(total - discountAmount);
         $("#discountAmount").val(discountAmount);
-      }
 
-      $("#amountTendered").bind('focusout', function () {
-        let tenderedAmount = $(this).val();
-        let totalAmount = $("#totalAmount").val();
-        if (tenderedAmount < totalAmount) {
-          swal({
-            title: "Hey why do you try to pay less money",
-            icon: "warning",
-          });
-          $("#amountTendered").val(totalAmount);
-        } else {
-          $("#balance").val(tenderedAmount - totalAmount);
+        let trendedAmount = $("#amountTendered").val();
+        if (trendedAmount) {
+            balanceCreate();
         }
-      });
 
-      //option tag remove
-      let optionElementRemove = (id) => {
+    }
+
+    $("#amountTendered").bind('focusout', function () {
+        if (!$("#discountRatio").val()) {
+            swal({
+                title: "Please Select Discount",
+                icon: "warning",
+            });
+        }
+
+        balanceCreate();
+    });
+
+    function balanceCreate() {
+        let tenderedAmount = parseFloat($("#amountTendered").val());
+        let totalAmount = parseFloat($("#totalAmount").val());
+
+
+        if (tenderedAmount < totalAmount) {
+            $("#balance").addClass("bg-danger");
+            $("#amountTendered").addClass("bg-danger");
+            $("#btnSubmit").hide();
+        } else {
+            $("#amountTendered").removeClass("bg-danger").addClass("bg-success");
+            $("#balance").val(tenderedAmount - totalAmount).removeClass("bg-danger").addClass("bg-success");
+            $("#btnSubmit").show();
+        }
+        if (isNaN($("#balance").val())) {
+            $("#balance").addClass("bg-danger");
+            $("#amountTendered").addClass("bg-danger");
+            $("#btnSubmit").hide();
+        }
+    }
+
+    //option tag remove
+    let optionElementRemove = (id) => {
         let selectedValue = $(id).val();
         let selectedItemId = `${id} option[value='${selectedValue}']`;
         $(selectedItemId).remove();
-      }
+    }
 
-      //option tag add
-      function optionTagAdd(id, name, sellPrice, abQut, exDate) {
+    //option tag add
+    function optionTagAdd(id, name, sellPrice, abQut, exDate) {
         return `<option value="${id}">
                           Item Name: ${name}  Sell Price : {sellPrice}
                           Available quantity : ${abQut}  Expired Date : ${exDate}
                         </option>`;
-      }
+    }
 
-    </script >
-  </div >
-</div >
+
+</script >
+
 </body >
 </html >

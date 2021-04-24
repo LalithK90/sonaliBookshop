@@ -92,7 +92,7 @@
                             <label class="control-label" for="contactOne">Contact No1 :</label>
                         </div>
                         <div class="col-md-8">
-                            <input id="contactOne" data-th-field="*{contactOne}" class="form-control mobile" tabindex="5" type="number" maxlength="10" min="9" required/>
+                            <input id="contactOne" data-th-field="*{contactOne}" class="form-control mobile" tabindex="5" type="text" maxlength="10" min="9" required/>
                             <span class="error"  data-th-errors="*{contactOne}"
                                    data-th-if="${#fields.hasErrors('contactOne')}" id="mobileOneError">Error Mobile Number</span>
                         </div>
@@ -103,7 +103,7 @@
                             <label class="control-label" for="contactTwo">Contact No2 :</label>
                         </div>
                         <div class="col-md-8">
-                            <input id="contactTwo" data-th-field="*{contactTwo}" class="form-control mobile" tabindex="6" type="number" maxlength="10" min="9"/>
+                            <input id="contactTwo" data-th-field="*{contactTwo}" class="form-control mobile" tabindex="6" type="text" maxlength="10" min="9"/>
                             <span class="error"  data-th-errors="*{contactTwo}"
                                    data-th-if="${#fields.hasErrors('contactTwo')}" id="mobileTwoError">Error Mobile Number</span>
                         </div>

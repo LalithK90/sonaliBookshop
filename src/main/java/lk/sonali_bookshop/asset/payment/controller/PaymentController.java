@@ -102,7 +102,7 @@ public class PaymentController {
       if (! paidAmounts.isEmpty() ) {
         purchaseOrderNeedToPay.setNeedToPaid(operatorService.subtraction(purchaseOrderNeedToPay.getPrice(), paidAmounts.stream().reduce(BigDecimal.ZERO, BigDecimal::add)));
       }else {
-        purchaseOrderNeedToPay.setNeedToPaid(BigDecimal.ONE);
+        purchaseOrderNeedToPay.setNeedToPaid(BigDecimal.ZERO);
       }
     }
     model.addAttribute("payment", new Payment());

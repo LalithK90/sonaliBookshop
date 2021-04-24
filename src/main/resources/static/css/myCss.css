@@ -4,7 +4,7 @@
     height: 100%;
 }
 .login2{
-    background-image: url(../img/login2.jpg);
+    background-image: url(../img/bookshop_login.jfif);
     background-size: cover;
     background-repeat: no-repeat;
     height: 100%;
@@ -48,7 +48,7 @@ input:focus{
 
 .login_btn:hover{
     color: black;
-    background-color: white;
+    background-color: red;
 }
 
 .links{
@@ -83,4 +83,5 @@ input:focus{
 .row{
     margin-top: 20px;
     margin-bottom: 20px;
+
 }

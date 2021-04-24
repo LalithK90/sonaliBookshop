@@ -6,13 +6,13 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum MainCategory {
-
-    COMPUTERS("Computers"),
-    COMPUTER_ACCESSORIES("Computer Accessories"),
-    FANTECH("Fantech"),
-    SSD_HARD_DRIVE("SSD Hard Drive"),
-    ELECTRONIC_DEVICES("Electronic Devices"),
-    MOBILE_DEVICES("Mobile Devices");
+    EXERCISE_BOOKS("Exercise Books"),
+    EDUCATIONAL_PUBLICATIONS("Educational Publications"),
+    BOOK_GENRES("Book Genres"),
+    NEWS_PAPERS("News Papers"),
+    MAGAZINES("Magazines"),
+    PAPERS("Papers"),
+    EQUIPMENTS("Equipments");
 
 
     private final String mainCategory;

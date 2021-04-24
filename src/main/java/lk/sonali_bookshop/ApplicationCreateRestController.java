@@ -34,17 +34,17 @@ public class ApplicationCreateRestController {
         this.employeeService = employeeService;
     }
 
-    @GetMapping("/select/user")
+    @GetMapping("/select/user") //http request go to the back end
     public String saveUser() {
         //roles list start
-        String[] roles = {"ADMIN","PROCUREMENT_MANAGER","CASHIER","MANAGER","HR_MANAGER","ACCOUNT_MANAGER"};
+        String[] roles = {"ADMIN","PROCUREMENT_MANAGER","CASHIER","MANAGER","HR_MANAGER","ACCOUNT_MANAGER"};//if you want to change role
         for (String s : roles) {
             Role role = new Role();
             role.setRoleName(s);
-            roleService.persist(role);
-        }
+            roleService.persist(role);// link to RoleService.java(user_management-role-service)
+        }//role save
 
-//Employee
+//Employee ( new employee make, not dependent)
         Employee employee = new Employee();
         employee.setCode("11111111");
         employee.setName("Admin User");
@@ -58,10 +58,10 @@ public class ApplicationCreateRestController {
         employee.setEmployeeStatus(EmployeeStatus.WORKING);
         employee.setDateOfBirth(LocalDate.now().minusYears(18));
         employee.setDateOfAssignment(LocalDate.now());
-        Employee employeeDb = employeeService.persist(employee);
+        Employee employeeDb = employeeService.persist(employee); //new employee save
 
 
-        //admin user one
+        //admin user one //create new user empty object
         User user = new User();
         user.setEmployee(employeeDb);
         user.setUsername("admin");
@@ -79,3 +79,9 @@ public class ApplicationCreateRestController {
 
 
 }
+//ApplicationCreateController-SelectUSer function call and system user name and password how to take
+//According to ER we put dependencies 1.role 2.employee
+/*Procurement manager(purchasing manager) analyze costs, negotiate contract details, and offer strategies and solutions to help
+companies better manage costs on supplies and vendor services. Additional duties include managing inventory, tracking orders,
+resolving issues concerning price disputes, and making bids for a vendor's services.
+ */

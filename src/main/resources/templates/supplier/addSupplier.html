@@ -13,12 +13,12 @@
         <form id="form" class="form-horizontal"  data-th-action="${addStatus==true?'/supplier/save':'/supplier/update'}"
                data-th-object="${supplier}" method="POST" enctype="multipart/form-data">
             <div class="row">
-                <div class="container-fluid ">
+                <div class="container-fluid bg-secondary form-Border ">
                     <div class="row text-center   ">
-                        <!--View List Button-->
+                        <!--Home Button-->
                         <div class="col">
-                            <a href="/supplier" class="btn btn-success" tabindex="1">
-                                <i class="fa fa-list" style="font-size: 20px"></i>&nbsp;&nbsp;View List
+                            <a class="btn btn-success" href="/home" tabindex="2">
+                                <i class="fa fa-home" style="font-size: 20px"></i> &nbsp;&nbsp;Home
                             </a>
                         </div>
                         <!--Form Name-->
@@ -29,12 +29,13 @@
                                 </strong>
                             </h2>
                         </div>
-                        <!--Home Button-->
+                        <!--View List Button-->
                         <div class="col">
-                            <a class="btn btn-success" href="/home" tabindex="2">
-                                <i class="fa fa-home" style="font-size: 20px"></i> &nbsp;&nbsp;Home
+                            <a href="/supplier" class="btn btn-success" tabindex="1">
+                                <i class="fa fa-list" style="font-size: 20px"></i>&nbsp;&nbsp;View List
                             </a>
                         </div>
+
                     </div>
                 </div>
 

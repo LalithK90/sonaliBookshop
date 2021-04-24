@@ -13,10 +13,10 @@
           <div class="row" >
             <div class="container-fluid " >
               <div class="row text-center   " >
-                <!--View list Button-->
+                <!--Home Button-->
                 <div class="col" >
-                  <a href="/category" class="btn btn-success" >
-                    <i class="fa fa-list" style="font-size: 20px" ></i >&nbsp;&nbsp;View List
+                  <a class="btn btn-success" href="/home" >
+                    <i class="fa fa-home" style="font-size: 20px" ></i > &nbsp;&nbsp;Home
                   </a >
                 </div >
                 <!--Form Name-->
@@ -28,12 +28,13 @@
                     </strong >
                   </h2 >
                 </div >
-                <!--Home Button-->
+                <!--View list Button-->
                 <div class="col" >
-                  <a class="btn btn-success" href="/home" >
-                    <i class="fa fa-home" style="font-size: 20px" ></i > &nbsp;&nbsp;Home
+                  <a href="/category" class="btn btn-success" >
+                    <i class="fa fa-list" style="font-size: 20px" ></i >&nbsp;&nbsp;View List
                   </a >
                 </div >
+
               </div >
             </div >
 
@@ -78,15 +79,13 @@
             </div >
             <!--Button-->
             <div class="form-group col-md-12 col-sm-12 text-center flex-column " >
-              <button class="btn btn-primary" >
-                <i class="fas fa-arrow-circle-left" style="font-size: 20px" ></i >&nbsp;&nbsp;Back
-              </button >
+
               <button class="btn btn-success ml-5" type="submit" tabindex="21" >
-                <i class="fa fa-save " style="font-size: 20px" ></i >&nbsp;&nbsp;<span id="submit"
-                                                                                       data-th-text="${addStatus==true?'Save': 'Update'}" ></span >
+                <i class="fa fa-save " style="font-size: 20px" ></i >&nbsp;&nbsp;
+                <span id="submit" data-th-text="${addStatus==true?'Save': 'Update'}" ></span >
               </button >
               <button class="btn btn-warning ml-5" type="reset" tabindex="21" >
-                <i class="far fa-times-circle" style="font-size: 20px" ></i >&nbsp;&nbsp;Cancel
+                <i class="far fa-times-circle" style="font-size: 20px" ></i >&nbsp;&nbsp;Clear
               </button >
             </div >
             <!--Error-->

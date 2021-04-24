@@ -49,14 +49,7 @@ public class WarrantyController {
             }
 
         }
-        if ( invoice.getInvoiceLedgers().get(0).getWarrantyNumber() != null ) {
-            InvoiceLedger invoiceLedger =
-                    invoiceLedgerService.findByWarrantyNumber(invoice.getInvoiceLedgers().get(0).getWarrantyNumber());
-            Invoice invoiceDb = invoiceService.findById(invoiceLedger.getInvoice().getId());
-            model.addAttribute("invoiceDetail", invoiceDb);
-            model.addAttribute("customerDetail", invoiceDb.getCustomer());
-            return "invoice/invoice-detail";
-        }
+
 
         model.addAttribute("messageShow", true);
         model.addAttribute("message", "There is not invoice in the system according to the provided details \n Could " +

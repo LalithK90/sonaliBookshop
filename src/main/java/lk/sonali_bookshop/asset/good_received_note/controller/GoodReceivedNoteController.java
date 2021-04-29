@@ -2,8 +2,8 @@ package lk.sonali_bookshop.asset.good_received_note.controller;
 
 import lk.sonali_bookshop.asset.common_asset.model.enums.LiveDead;
 import lk.sonali_bookshop.asset.good_received_note.entity.GoodReceivedNote;
-import lk.sonali_bookshop.asset.good_received_note.entity.enums.GoodReceivedNoteState;
 import lk.sonali_bookshop.asset.good_received_note.service.GoodReceivedNoteService;
+import lk.sonali_bookshop.asset.item.service.ItemService;
 import lk.sonali_bookshop.asset.ledger.entity.Ledger;
 import lk.sonali_bookshop.asset.ledger.service.LedgerService;
 import lk.sonali_bookshop.asset.purchase_order.entity.PurchaseOrder;
@@ -16,20 +16,22 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.List;
+
 @Controller
 @RequestMapping("/goodReceivedNote")
 public class GoodReceivedNoteController {
     private final GoodReceivedNoteService goodReceivedNoteService;
     private final PurchaseOrderService purchaseOrderService;
     private final LedgerService ledgerService;
+    private final ItemService itemService;
 
     public GoodReceivedNoteController(GoodReceivedNoteService goodReceivedNoteService,
-                                      PurchaseOrderService purchaseOrderService, LedgerService ledgerService) {
+                                      PurchaseOrderService purchaseOrderService, LedgerService ledgerService,
+                                      ItemService itemService) {
         this.goodReceivedNoteService = goodReceivedNoteService;
         this.purchaseOrderService = purchaseOrderService;
         this.ledgerService = ledgerService;
+        this.itemService = itemService;
     }
 
 
